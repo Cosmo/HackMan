@@ -1,0 +1,116 @@
+import UIKit
+
+class InformationViewController: UIViewController {
+    weak var coordinator: InformationCoordinator?
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.grouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        title = NSLocalizedString("Information", comment: "Information Title")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        view.addSubview(tableView)
+        
+        setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: index, animated: true)
+        }
+    }
+    
+    private func setupConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+    }
+}
+
+extension InformationViewController {
+    func item(for indexPath: IndexPath) -> Item {
+        return contents[indexPath.section].data[indexPath.item]
+    }
+}
+
+extension InformationViewController: UITableViewDataSource {
+    struct Section {
+        var name: String?
+        var data: [Item]
+    }
+    
+    struct Item {
+        var name: String
+        var url: URL?
+    }
+
+    var contents: [Section] {
+        return [
+            Section(
+                name: nil,
+                data: [
+                    Item(name: NSLocalizedString("Licence", comment: ""), url: Bundle.main.url(forResource: "Licence", withExtension: "html")),
+                    Item(name: NSLocalizedString("Data Protection", comment: ""), url: Bundle.main.url(forResource: "DataProtection", withExtension: "html")),
+                    Item(name: NSLocalizedString("Publisher", comment: "German 'Impressum' by Law"), url: Bundle.main.url(forResource: "Publisher", withExtension: "html"))
+                ]
+            ),
+            Section(
+                name: nil,
+                data: [
+                    Item(name: NSLocalizedString("Legal Notices", comment: "3rd Party Licences"), url: Bundle.main.url(forResource: "LegalNotices", withExtension: "html"))
+                ]
+            )
+        ]
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return contents.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contents[section].data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let information = item(for: indexPath)
+        let cell = UITableViewCell()
+        cell.textLabel?.text = information.name
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+}
+
+extension InformationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.detail(item: item(for: indexPath))
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return contents[section].name
+    }
+}

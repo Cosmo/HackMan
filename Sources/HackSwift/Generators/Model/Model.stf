@@ -1,0 +1,15 @@
+import Foundation
+
+struct {{ resourceName }} {
+    {% for property in properties %}
+    let {{ property.name }}: {{ property.valueType }}{% endfor %}
+
+    static func mock() -> [{{ resourceName }}] {
+        return [{% for mock in mocks %}
+            {{ mock }}, {% endfor %}
+        ]
+    }
+}
+
+extension {{ resourceName }}: Codable {
+}

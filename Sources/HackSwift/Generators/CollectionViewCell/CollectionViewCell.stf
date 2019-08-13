@@ -1,0 +1,81 @@
+//
+//  {{ className }}.swift
+//
+
+import UIKit
+
+class {{ resourceName }}CollectionViewCell: UICollectionViewCell {
+    var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = NSLayoutConstraint.Axis.vertical
+        return stackView
+    }()
+    
+    {% for property in properties %}
+        lazy var {{ property.name }}Label: UILabel = {
+            let label = UILabel()
+            {% if forloop.counter == 0 %}
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
+            {% elif forloop.counter == 1 %}
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+            {% else %}
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
+            {% endif %}
+            label.numberOfLines = 0
+            return label
+            }()
+    {% endfor %}
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        preservesSuperviewLayoutMargins = true
+        contentView.preservesSuperviewLayoutMargins = true
+        
+        contentView.backgroundColor = UIColor.lightGray
+            
+        {% for property in properties %}
+        stackView.addArrangedSubview({{ property.name }}Label)
+        {% endfor %}
+        
+        contentView.addSubview(stackView)
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        // This fixes an iOS 12 Bug
+        // https://stackoverflow.com/a/52394336/2494219
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        self.updateConstraintsIfNeeded()
+        
+        let attributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        var frame = attributes.frame
+        frame.size.width = layoutAttributes.size.width
+        attributes.frame = frame
+        return attributes
+    }
+}
+
+extension {{ resourceName }}CollectionViewCell: ReusableView {}

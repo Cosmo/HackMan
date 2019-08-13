@@ -1,0 +1,81 @@
+import UIKit
+import WebKit
+import SafariServices
+
+class WebViewController: UIViewController {
+    weak var coordinator: InformationCoordinator?
+    var url: URL?
+    
+    lazy var webView: WKWebView = {
+        let source = """
+        var meta = document.createElement('meta');
+        meta.name = "viewport";
+        meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+        document.head.appendChild(meta);
+        """
+        
+        let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userContentController: WKUserContentController = WKUserContentController()
+        userContentController.addUserScript(script)
+        
+        let configuration: WKWebViewConfiguration = WKWebViewConfiguration()
+        configuration.userContentController = userContentController
+        
+        let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
+        webView.navigationDelegate = self
+        if let url = url {
+            webView.load(URLRequest(url: url))
+        }
+        return webView
+    }()
+    
+    convenience init(url: URL) {
+        self.init(nibName: nil, bundle: nil, url: url)
+    }
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, url: URL) {
+        self.url = url
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.white
+        
+        setupConstraints()
+    }
+    
+    override func loadView() {
+        view = webView
+    }
+    
+    func setupConstraints() {
+        
+    }
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url, navigationAction.navigationType == .linkActivated {
+            if url.absoluteString.hasPrefix("http") {
+                let viewController = SFSafariViewController(url: url)
+                present(viewController, animated: true)
+            } else {
+                UIApplication.shared.open(url)
+            }
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+}

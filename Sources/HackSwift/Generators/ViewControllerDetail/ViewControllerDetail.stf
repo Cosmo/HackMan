@@ -1,0 +1,89 @@
+import UIKit
+
+class {{ resourceName }}ViewController: UIViewController {
+    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
+    
+    var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = NSLayoutConstraint.Axis.vertical
+        return stackView
+    }()
+    
+    {% for property in properties %}
+    
+    {% if property.isLinkable %}
+    lazy var {{ property.name }}Button: UIButton = {
+    let button = UIButton(type: UIButton.ButtonType.system)
+        button.contentHorizontalAlignment = .left
+        return button
+    }()
+    {% else %}
+    lazy var {{ property.name }}Label: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    {% endif %}
+    
+    {% endfor %}
+    
+    
+    convenience init({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
+        self.init(nibName: nil, bundle: nil, {{ resourceName | lowerCamelCased }}: {{ resourceName | lowerCamelCased }})
+    }
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, {{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
+        self.{{ resourceName | lowerCamelCased }} = {{ resourceName | lowerCamelCased }}
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("I don't know how to do this")
+        // commonInit()
+    }
+    
+    func commonInit() {
+        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized }} Title (Singular)")
+    }
+    
+    override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    navigationController?.navigationBar.prefersLargeTitles = true
+    
+    view.backgroundColor = UIColor.white
+    
+    {% for property in properties %}
+    {% if property.isLinkable %}
+        {{ property.name }}Button.addTarget(self, action: #selector({{ property.name }}ButtonAction(sender:)), for: UIControl.Event.touchUpInside)
+        {{ property.name }}Button.setTitle(String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }}), for: UIControl.State.normal)
+        stackView.addArrangedSubview({{ property.name }}Button)
+    {% else %}
+        {{ property.name }}Label.text = String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+        stackView.addArrangedSubview({{ property.name }}Label)
+    {% endif %}
+    {% endfor %}
+    
+    view.addSubview(stackView)
+    
+    setupConstraints()
+    }
+    
+    func setupConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.layoutMarginsGuide.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        stackView.layoutMarginsGuide.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        view.layoutMarginsGuide.trailingAnchor.constraint(equalTo: stackView.layoutMarginsGuide.trailingAnchor).isActive = true
+    }
+}
+    
+{% for property in properties %}
+{% if property.isLinkable %}
+extension {{ resourceName }}ViewController {
+    @objc func {{ property.name | lowerCamelCased }}ButtonAction(sender: UIButton) {
+        (coordinator?.parent as? MainCoordinator)?.select{{ property.name | upperCamelCased }}({{ property.name }}: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+    }
+}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,24 @@
+import UIKit
+
+class InformationCoordinator: Coordinator {
+    var children = [Coordinator]()
+    var parent: Coordinator?
+    var containerController: UIViewController
+    
+    init(navigationController: UINavigationController) {
+        self.containerController = navigationController
+    }
+    
+    func start() {
+        let viewController = InformationViewController()
+        viewController.coordinator = self
+        (containerController as? UINavigationController)?.pushViewController(viewController, animated: false)
+    }
+    
+    func detail(item: InformationViewController.Item) {
+        guard let url = item.url else { return }
+        let viewController = WebViewController(url: url)
+        viewController.title = item.name
+        (containerController as? UINavigationController)?.pushViewController(viewController, animated: true)
+    }
+}

@@ -1,0 +1,42 @@
+//
+//  {{ resourceName }}ViewController.swift
+//
+
+import UIKit
+
+class {{ resourceName | pluralized }}ViewController: UIViewController {
+    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
+    
+    convenience init({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
+        self.init(nibName: nil, bundle: nil, {{ resourceName | lowerCamelCased }}: {{ resourceName | lowerCamelCased }})
+    }
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, {{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
+        self.{{ resourceName | lowerCamelCased }} = {{ resourceName | lowerCamelCased }}
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("I don't know how to do this")
+        // commonInit()
+    }
+    
+    func commonInit() {
+        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized }} Title (Singular)")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        view.backgroundColor = UIColor.white
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+    }
+}

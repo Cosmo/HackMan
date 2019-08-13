@@ -1,0 +1,32 @@
+import UIKit
+
+class MainCoordinator: Coordinator {
+    var children = [Coordinator]()
+    var parent: Coordinator?
+    var containerController: UIViewController
+
+    init(tabBarController: UITabBarController) {
+        self.containerController = tabBarController
+    }
+
+    func start() {
+        children = [
+        {{ children|join:", " }}
+    ]
+
+    for var childCoordinator in children {
+        childCoordinator.parent = self
+        childCoordinator.start()
+    }
+
+    (containerController as? UITabBarController)?.viewControllers = children.map { $0.containerController }
+    }
+
+    {% for resource in resources %}
+    func select{{ resource.name }}({{ resource.name | lowerCamelCased }}: {{ resource.name }}) {
+        (containerController as? UITabBarController)?.selectedIndex = children.firstIndex { $0 is {{ resource.name | pluralized }}Coordinator } ?? 0
+        let coordinator = children.first { $0 is {{ resource.name | pluralized }}Coordinator } as? {{ resource.name | pluralized }}Coordinator
+        coordinator?.detail({{ resource.name | lowerCamelCased }}: {{ resource.name | lowerCamelCased }})
+    }
+    {% endfor %}
+}
