@@ -27,7 +27,7 @@ if CommandLine.arguments.count > 1 {
             print("app new [project_name]")
         }
     case "localize", "l":
-        Localization()
+        Localization().generate(options: options)
     case "generate", "g":
         print("generate")
         if arguments.count > 0 {
