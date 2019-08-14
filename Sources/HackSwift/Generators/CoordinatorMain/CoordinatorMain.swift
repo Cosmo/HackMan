@@ -3,8 +3,6 @@ import FileProvider
 
 class CoordinatorMain: Generator {
     func generate(resourceNames: [String], options: [String]?) {
-        print("ResourceNames: \(resourceNames)")
-        print("Options: \(options)")
         let resources = resourceNames
             .map { $0.camelCased(.upper) }
             .map { ["name": $0, "pluralName": String($0).pluralized, "className": String($0) + "ViewController" ] }
@@ -17,10 +15,6 @@ class CoordinatorMain: Generator {
             "resources": resources,
             "children": children
         ]
-        
-        print("Options: \("resourceNames"])")
-        print("Resources: \(context["resources"])")
-        print("Children: \(context["children"])")
         
         let ext = Extension()
         ext.registerFilter("pluralized") { (value: Any?) in
