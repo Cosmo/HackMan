@@ -7,6 +7,20 @@ Hackman is heavily inspired by the `rails` command.
 
 ## Usage
 
+### Installation
+
+Clone and build
+```
+git clone git@github.com:Cosmo/HackMan.git
+cd HackMan
+swift build
+```
+
+Add `hackman` executable to your path.
+```
+PATH=\$PATH:$(pwd)/.build/debug
+```
+
 ### New Project
 
 ```
