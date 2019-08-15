@@ -72,6 +72,10 @@ hackman generate view_controller_information
 
 # Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
 hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …
+# By default, the scaffold will be UICollectionView based.
+# In order to create UITableView based scaffolds, pass the --view=table at the end.
+# Like so:
+hackman generate scaffold Song title:string year:Int --view=table
 ```
 
 You can also write `hackman g` instead of `hackman generate`.
