@@ -79,7 +79,7 @@ To save you some typing time, you can write `hackman g` instead of `hackman gene
 When creating scaffolds, models, controllers you can also specify multiple fields to be generated automatically
 
 ```
-hackman generate scaffold Author name:string birthday:date
+hackman g scaffold Author name:string birthday:date
 ```
 This commands creates among other things a struct of type `Author` with the following properties.
 ```
@@ -89,7 +89,7 @@ This commands creates among other things a struct of type `Author` with the foll
 
 You can also reference to your custom types.
 ```
-hackman generate scaffold Article title:string body:string published_at:date author:author
+hackman g scaffold Article title:string body:string published_at:date author:author
 ```
 This will generate the following properties inside of the `Article` model.
 ```
