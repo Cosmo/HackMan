@@ -5,9 +5,7 @@ HackMan is a simple tool for generating boilerplate code directly via the comman
 Let `hackman` do the boring work and save some time.
 Hackman is heavily inspired by the `rails` command.
 
-## Usage
-
-### Installation
+## Installation
 
 Clone and build
 ```
@@ -20,6 +18,8 @@ Add the `hackman` executable to your path.
 ```
 PATH=\$PATH:$(pwd)/.build/debug
 ```
+
+## Usage
 
 ### New Project
 
