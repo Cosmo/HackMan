@@ -3,62 +3,46 @@
 HackMan is a simple tool for generating a working iOS app via the command line.
 Inspired by the rails command line tools, HackMan features the following commands:
 
-## Generators
+## Commands
 
-### Project
+```
+hackman new [AppName]
 
-Command: `$ hackman new [MyApp]`
+hackman generate app_delegate
+hackman generate asset_catalog
+hackman generate launch_screen
+hackman generate coordinator
+hackman generate reusable_view
 
-#### Example
+hackman generate coordinator_child [ResourceName]
+hackman generate model [ResourceName]
 
-`$ hackman new MusicPlayer`
+hackman generate view_controller [ResourceName]
 
-### Models
+hackman generate view_controller_collection [ResourceName]
+hackman generate collection_view_cell [ResourceName]
 
-Command: `$ hackman [g|generate] model [ResourceName] [FieldName]:[Type] [FieldName]:[Type] ...`
+hackman generate view_controller_table [ResourceName]
+hackman generate table_view_cell [ResourceName] 
 
-#### Example
+hackman generate view_controller_detail [ResourceName]
+hackman generate view_controller_web
+hackman generate view_controller_information
 
-`$ hackman g model Song name:string year:int`
-
-### Collection ViewControllers
-
-Command: `$ hackman [g|generate] view_controller_collection [ResourceName] [FieldName]:[Type] [FieldName]:[Type] ...`
-
-#### Example
-
-`$ hackman g view_controller_collection Song name:string year:int`
-
-### Scaffolds
-
-Command: `$ hackman [g|generate] scaffold [ResourceName] [FieldName]:[Type] [FieldName]:[Type] ...`
-
-#### Example
-
-`$ hackman g scaffold Song name:string year:int`
-
-### LaunchScreen
-
-Command `HackMan g launch_screen`
-
-### Asset Catalog
-
-Command `HackMan g asset_catalog`
-
+hackman generate scaffold [ResourceName]
+```
 
 ## An example of a fully working app
 
 * `hackman new MusicApp`
 * `cd MusicApp`
-* `hackman g scaffold artist name -f`
-* `HackMan g scaffold song title year:int -f`
-* `HackMan g scaffold album name uuid artist:artist created_at:date updated_at:date -f`
-* `HackMan g view_controller_information -f`
-* `HackMan g coordinator_main song artist album --include=information -f`
-* `HackMan g asset_catalog -f`
-* `HackMan g launch_screen -f`
-* `HackMan g localization -l=de,en`
-* `HackMan g write -f`
+* `hackman g scaffold artist name`
+* `hackman g scaffold song title year:int`
+* `hackman g scaffold album name uuid artist:artist created_at:date updated_at:date`
+* `hackman g view_controller_information`
+* `hackman g coordinator_main song artist album --include=information`
+* `hackman g asset_catalog`
+* `hackman g launch_screen`
 * `xcodegen`
 * `open MusicApp.xcodeproj`
-
+* `cd ..`
