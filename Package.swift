@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "HackMan",
     products: [
-        .executable(name: "HackMan", targets: ["HackMan"])
+        .executable(name: "HackMan", targets: ["HackMan"]),
+        .library(name: "HackManLib", targets: ["HackManLib"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -17,10 +18,13 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "HackMan",
+            name: "HackManLib",
             dependencies: ["Stencil"]),
+        .target(
+            name: "HackMan",
+            dependencies: ["HackManLib"]),
         .testTarget(
             name: "HackManTests",
-            dependencies: ["HackMan"]),
+            dependencies: ["HackManLib"]),
     ]
 )
