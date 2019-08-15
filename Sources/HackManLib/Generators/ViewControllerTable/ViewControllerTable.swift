@@ -36,7 +36,6 @@ class ViewControllerTable: NSObject, Generator {
             return value
         }
         
-        let path = Path("\(Bundle.main.bundlePath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader, extensions: [ext])
         

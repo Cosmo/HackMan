@@ -35,15 +35,12 @@ class NewProject: NSObject, Generator {
             return value
         }
         
-        let path = Path("\(Bundle.main.bundlePath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "project.yml", context: context)
-        
-        try? FileManager().createDirectory(atPath: "\(projectName)", withIntermediateDirectories: true, attributes: nil)
-        try? rendered.write(toFile: "\(projectName)/project.yml", atomically: true, encoding: String.Encoding.utf8)
+        Writer.write(contents: rendered, toFile: "\(projectName)/project.yml")
         
         let rendered2 = try! environment.renderTemplate(name: "gitignore", context: context)
-        try? rendered2.write(toFile: "\(projectName)/.gitignore", atomically: true, encoding: String.Encoding.utf8)
+        Writer.write(contents: rendered2, toFile: "\(projectName)/.gitignore")
     }
 }

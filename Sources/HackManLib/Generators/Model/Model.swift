@@ -20,7 +20,6 @@ class Model: NSObject, Generator {
             "mocks": mocks
         ]
         
-        let path = Path("\(Bundle.main.bundlePath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Model.stf", context: context)

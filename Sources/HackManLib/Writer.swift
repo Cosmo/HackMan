@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PathKit
 
 struct Writer {
     static func basePath(of filePath: String) -> String {
@@ -18,14 +19,27 @@ struct Writer {
         var previousPath: String?
         for path in path.split(separator: "/") {
             let nextPath = [previousPath, String(path)].compactMap { $0 }.joined(separator: "/")
-            print(nextPath)
-            try? FileManager().createDirectory(atPath: nextPath, withIntermediateDirectories: true, attributes: nil)
+            
+            if Path(nextPath).exists {
+                print("\(nextPath)/ skipped.")
+            } else {
+                try? FileManager().createDirectory(atPath: nextPath, withIntermediateDirectories: true, attributes: nil)
+                print("\(nextPath)/ created.")
+            }
+            
             previousPath = nextPath
         }
     }
     
     static func write(contents: String, toFile filePath: String) {
         createPath(basePath(of: filePath))
+        let paths = filePath.split(separator: "/")
+        
+        if let file = paths.last {
+            let spaces = String(repeating: "  ", count: paths.count > 0 ? paths.count - 1 : 0)
+            print("\(spaces)\(file) created.")
+        }
+        
         try? contents.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
     }
 }
