@@ -72,26 +72,38 @@ hackman generate view_controller_information
 hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …
 ```
 
-#### Properties
+To save you some typing time, you can write `hackman g` instead of `hackman generate`.
+
+### Properties
 
 When creating scaffolds, models, controllers you can also specify multiple fields to be generated automatically
 
 ```
 hackman generate scaffold Author name:string birthday:date
-This commands creates among other things a struct of type "Author" with
+```
+This commands creates among other things a struct of type `Author` with the following properties.
+```
     let name: String
     let birthday: Date
-as properties.
+```
 
-You can also reference to other types as a property.
+You can also reference to your custom types.
+```
 hackman generate scaffold Article title:string body:string published_at:date author:author
-This will generate
+```
+This will generate the following properties inside of the `Article` model.
+```
     let title: String
     let body: String
     let publishedAt: Date
     let author: Author
-inside of the "Article" model.
 ```
+
+If you omit the property type, `hackman` assumes you want a property of type `String`.
+```
+hackman g scaffold Article title body published_at:date author:author
+```
+
 
 ### An example of a fully working app
 
