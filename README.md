@@ -74,7 +74,7 @@ hackman generate view_controller_information
 hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …
 ```
 
-To save you some typing time, you can write `hackman g` instead of `hackman generate`.
+You can also write `hackman g` instead of `hackman generate`.
 
 ### Properties
 
