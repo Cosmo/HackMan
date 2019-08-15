@@ -4,8 +4,8 @@
 
 import UIKit
 
-class {{ resourceName | pluralized }}ViewController: UIViewController {
-    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+class {{ resourceName }}ViewController: UIViewController {
+    weak var coordinator: {{ resourceName }}Coordinator?
     var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
     
     convenience init({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
@@ -24,7 +24,7 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
     }
     
     func commonInit() {
-        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized }} Title (Singular)")
+        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName }} Title (Singular)")
     }
     
     override func viewDidLoad() {
