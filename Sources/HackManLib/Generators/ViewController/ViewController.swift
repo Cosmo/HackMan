@@ -39,8 +39,6 @@ class ViewController: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
-        try? FileManager().createDirectory(atPath: "Source/ViewControllers", withIntermediateDirectories: true, attributes: nil)
-        try? FileManager().createDirectory(atPath: "Source/ViewControllers/\(resourceName.pluralized)", withIntermediateDirectories: true, attributes: nil)
-        try? rendered.write(toFile: "Source/ViewControllers/\(resourceName.pluralized)/\(resourceName.pluralized)ViewController.swift", atomically: true, encoding: String.Encoding.utf8)
+        Writer.write(contents: rendered, toFile: "Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift")
     }
 }
