@@ -3,7 +3,7 @@
 HackMan is a simple tool for generating boilerplate code directly via the command line.
 
 Let `hackman` do the boring work and save some time.
-Hackman is heavily inspired by the rails command line tools.
+Hackman is heavily inspired by the `rails` command.
 
 ## Usage
 
