@@ -1,7 +1,9 @@
 # HackMan
 
-HackMan is a simple tool for generating a working iOS app via the command line.
-Inspired by the rails command line tools, HackMan features the following commands:
+HackMan is a simple tool for generating boilerplate code directly via the command line.
+
+Let `hackman` do the boring work and save some time.
+Hackman is heavily inspired by the rails command line tools.
 
 ## Usage
 
