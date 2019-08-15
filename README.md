@@ -1,3 +1,5 @@
+<img src="https://github.com/Cosmo/HackMan/raw/master/HackMan-Banner.png" alt=" text" width="100%" />
+
 # HackMan
 
 HackMan is a simple tool for generating boilerplate code directly via the command line.
