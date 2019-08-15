@@ -1,7 +1,7 @@
 import XCTest
 
-import HackSwiftTests
+import HackManTests
 
 var tests = [XCTestCaseEntry]()
-tests += HackSwiftTests.allTests()
+tests += HackManTests.allTests()
 XCTMain(tests)
