@@ -20,5 +20,11 @@ class ReusableView: NSObject, Generator {
         
         try? FileManager().createDirectory(atPath: "Source/Protocols", withIntermediateDirectories: true, attributes: nil)
         try? rendered2.write(toFile: "Source/Protocols/UICollectionViewExtensions.swift", atomically: true, encoding: String.Encoding.utf8)
+        
+        
+        let rendered3 = try! environment.renderTemplate(name: "UITableViewExtensions.stf")
+        
+        try? FileManager().createDirectory(atPath: "Source/Protocols", withIntermediateDirectories: true, attributes: nil)
+        try? rendered3.write(toFile: "Source/Protocols/UITableViewExtensions.swift", atomically: true, encoding: String.Encoding.utf8)
     }
 }

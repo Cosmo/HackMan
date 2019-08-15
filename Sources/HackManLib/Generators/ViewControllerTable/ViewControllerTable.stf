@@ -1,0 +1,102 @@
+//
+//  {{ resourceName | pluralized }}ViewController.swift
+//
+
+import UIKit
+
+class {{ resourceName | pluralized }}ViewController: UIViewController {
+    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero)
+        tableView.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register({{ resourceName }}TableViewCell.self)
+        tableView.refreshControl = refreshControl
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        return tableView
+    }()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        let refreshTitle = NSLocalizedString("Refreshing {{ resourceName | pluralized }} …", comment: "{{ resourceName | pluralized }} Refresh Text")
+        refreshControl.attributedTitle = NSAttributedString(string: refreshTitle)
+        refreshControl.addTarget(self, action: #selector(refresh{{ resourceName | pluralized }}(sender:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        title = NSLocalizedString("{{ resourceName | pluralized }}", comment: "{{ resourceName | pluralized }} Title (Plural)")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        view.backgroundColor = UIColor.white
+        
+        view.addSubview(tableView)
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: tableView.trailingAnchor).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+}
+
+extension {{ resourceName | pluralized }}ViewController {
+    var {{ resourceName | pluralized | lowerCamelCased }}: [{{ resourceName }}] {
+        return {{ resourceName }}.mock()
+    }
+}
+
+extension {{ resourceName | pluralized }}ViewController {
+    @objc func refresh{{ resourceName | pluralized }}(sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            sender.endRefreshing()
+        })
+    }
+}
+
+extension {{ resourceName | pluralized }}ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Asks your data source object for the number of items in the specified section.
+        return {{ resourceName | pluralized | lowerCamelCased }}.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as {{ resourceName }}TableViewCell
+        let {{ resourceName | lowerCamelCased }} = {{ resourceName | pluralized | lowerCamelCased }}[indexPath.item]
+        {% for property in properties %}
+          cell.{{ property.name }}Label.text = String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+        {% endfor %}
+        return cell
+    }
+}
+
+extension {{ resourceName | pluralized }}ViewController: UITableViewDelegate {
+    
+}
