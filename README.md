@@ -138,4 +138,3 @@ hackman g scaffold Article title body published_at:date author:author
 * `hackman g launch_screen`
 * `xcodegen`
 * `open MusicApp.xcodeproj`
-* `cd ..`
