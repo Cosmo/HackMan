@@ -41,26 +41,26 @@ hackman generate coordinator_main
 # Create a Child-Coordinator with the given name
 hackman generate coordinator_child [Name]
 
-# Create a Model with the given name and fields
-hackman generate model [Name] [Field1]:[Type] [Field2]:[Type] …
+# Create a Model with the given name and properties
+hackman generate model [Name] [Property1]:[Type] [Property2]:[Type] …
 
 # Create a UIViewController-Subclass with the given name
 hackman generate view_controller [Name]
 
 # Create a ViewControllerCollection (UIViewController-Subclass with a UICollectionView) and UICollectionViewDataSource
-hackman generate view_controller_collection [Name] [Field1]:[Type] [Field2]:[Type] …
+hackman generate view_controller_collection [Name] [Property1]:[Type] [Property2]:[Type] …
 
-# Create a UICollectionViewCell-Subclass with the given namen and fields as UILabels
-hackman generate collection_view_cell [Name] [Field1]:[Type] [Field2]:[Type] …
+# Create a UICollectionViewCell-Subclass with the given namen and properties as UILabels
+hackman generate collection_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …
 
 # Create a ViewControllerTable (UIViewController-Subclass with a UITableView) and UITableViewDataSource
-hackman generate view_controller_table [Name] [Field1]:[Type] [Field2]:[Type] …
+hackman generate view_controller_table [Name] [Property1]:[Type] [Property2]:[Type] …
 
-# Create a UITableViewCell-Subclass with the given namen and fields as UILabels
-hackman generate table_view_cell [Name] [Field1]:[Type] [Field2]:[Type] …
+# Create a UITableViewCell-Subclass with the given namen and properties as UILabels
+hackman generate table_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …
 
-# Create a ViewControllerDetail (UIViewController-Subclass) with the given namen and fields as UILabels
-hackman generate view_controller_detail [Name] [Field1]:[Type] [Field2]:[Type] …
+# Create a ViewControllerDetail (UIViewController-Subclass) with the given namen and properties as UILabels
+hackman generate view_controller_detail [Name] [Property1]:[Type] [Property2]:[Type] …
 
 # Create a UIViewController-Subclass with a UIWebView
 hackman generate view_controller_web
@@ -69,9 +69,29 @@ hackman generate view_controller_web
 hackman generate view_controller_information
 
 # Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
-hackman generate scaffold [Name] [Field1]:[Type] [Field2]:[Type] …
+hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …
 ```
 
+#### Properties
+
+When creating scaffolds, models, controllers you can also specify multiple fields to be generated automatically
+
+```
+hackman generate scaffold Author name:string birthday:date
+This commands creates among other things a struct of type "Author" with
+    let name: String
+    let birthday: Date
+as properties.
+
+You can also reference to other types as a property.
+hackman generate scaffold Article title:string body:string published_at:date author:author
+This will generate
+    let title: String
+    let body: String
+    let publishedAt: Date
+    let author: Author
+inside of the "Article" model.
+```
 
 ### An example of a fully working app
 
