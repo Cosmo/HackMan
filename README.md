@@ -16,7 +16,7 @@ cd HackMan
 swift build
 ```
 
-Add `hackman` executable to your path.
+Add the `hackman` executable to your path.
 ```
 PATH=\$PATH:$(pwd)/.build/debug
 ```
