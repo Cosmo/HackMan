@@ -152,6 +152,14 @@ hackman g scaffold Article title body published_at:date author:author
 * Xcode 10
 * Swift 5
 
+## Todos
+
+* [ ] Easier setup
+* [ ] Easy support for custom generators
+* [ ] Support for `help [command]`
+* [ ] SwiftUI based templates
+* [ ] Generator for localization
+
 ## Contact
 
 * Devran "Cosmo" Uenal
