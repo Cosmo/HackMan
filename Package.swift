@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "HackMan",
     products: [
-        .executable(name: "HackMan", targets: ["HackMan"]),
+        .executable(name: "hackman", targets: ["HackMan"]),
         .library(name: "HackManLib", targets: ["HackManLib"])
     ],
     dependencies: [
