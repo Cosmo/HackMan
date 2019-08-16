@@ -2,6 +2,8 @@
 
 # HackMan
 
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
+
 HackMan is a simple tool for generating boilerplate code directly via the command line.
 
 Let `hackman` do the boring work and save some time.
@@ -140,3 +142,17 @@ hackman g scaffold Article title body published_at:date author:author
 * `hackman g launch_screen`
 * `xcodegen`
 * `open MusicApp.xcodeproj`
+
+## Requirements
+
+* Xcode 10
+* Swift 5
+
+## Contact
+
+* Devran "Cosmo" Uenal
+* Twitter: [@maccosmo](http://twitter.com/maccosmo)
+
+## License
+
+HackMan is released under the [MIT License](http://www.opensource.org/licenses/MIT).
