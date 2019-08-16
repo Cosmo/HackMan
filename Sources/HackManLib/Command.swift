@@ -31,7 +31,7 @@ public enum Command {
                 NewProject().generate(arguments: arguments, options: options)
             } else {
                 print("No project name provided.")
-                print("app new [project_name]")
+                print("hackman new [AppName]")
             }
         case .localize:
             Localization().generate(arguments: arguments, options: options)
@@ -42,21 +42,31 @@ public enum Command {
                 generator.init().generate(arguments: arguments, options: options)
             } else {
                 print("No generator name provided.")
-                print("app generate [generator]")
+                print("hackman generate [Generator]")
                 print("or")
-                print("app g [generator]")
+                print("hackman g [Generator]")
             }
         default:
             print("Unknown command.")
             print("Try one of those commands:")
-            print("app new MusicApp")
-            print("app g scaffold Album name uuid artist:Artist createdAt:Date updatedAt:Date -f")
-            print("app g view_controller_information -f")
-            print("app g coordinator_main Song Artist Album --include=Information -f")
-            print("app g asset_catalog -f")
-            print("app g launch_screen -f")
-            print("app g localization -l=de,en")
-            print("app g write -f")
+            print("hackman new [AppName]")
+            print("hackman generate app_delegate")
+            print("hackman generate asset_catalog")
+            print("hackman generate launch_screen")
+            print("hackman generate reusable_view")
+            print("hackman generate coordinator")
+            print("hackman generate coordinator_main")
+            print("hackman generate coordinator_child [Name]")
+            print("hackman generate model [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate view_controller [Name]")
+            print("hackman generate view_controller_collection [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate collection_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate view_controller_table [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate table_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate view_controller_detail [Name] [Property1]:[Type] [Property2]:[Type] …")
+            print("hackman generate view_controller_web")
+            print("hackman generate view_controller_information")
+            print("hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …")
         }
     }
 }
