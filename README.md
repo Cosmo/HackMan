@@ -143,6 +143,10 @@ hackman g scaffold Article title body published_at:date author:author
 * `xcodegen`
 * `open MusicApp.xcodeproj`
 
+#### Demo
+
+![Demo](https://github.com/Cosmo/HackMan/blob/master/HackMan-Preview.gif?raw=true)
+
 ## Requirements
 
 * Xcode 10
