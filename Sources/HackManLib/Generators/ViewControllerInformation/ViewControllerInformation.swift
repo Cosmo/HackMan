@@ -1,6 +1,5 @@
+import Foundation
 import Stencil
-import FileProvider
-import PathKit
 
 @objc(ViewControllerInformation)
 class ViewControllerInformation: NSObject, Generator {

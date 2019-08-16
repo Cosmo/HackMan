@@ -1,7 +1,5 @@
-import Stencil
-import FileProvider
 import Foundation
-import PathKit
+import Stencil
 
 @objc(NewProject)
 class NewProject: NSObject, Generator {

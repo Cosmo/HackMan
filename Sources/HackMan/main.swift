@@ -34,5 +34,3 @@ if options.contains("--verbose") {
 }
 
 Command(command: command).run(arguments: arguments, options: options)
-
-// Writer.write(contents: "hello", toFile: "Eins/Zwei/Drei/Datei.swift")

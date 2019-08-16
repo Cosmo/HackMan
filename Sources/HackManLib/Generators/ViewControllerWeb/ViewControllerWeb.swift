@@ -1,6 +1,5 @@
+import Foundation
 import Stencil
-import FileProvider
-import PathKit
 
 @objc(ViewControllerWeb)
 class ViewControllerWeb: NSObject, Generator {

@@ -1,6 +1,5 @@
+import Foundation
 import Stencil
-import FileProvider
-import PathKit
 
 @objc(Coordinator)
 class Coordinator: NSObject, Generator {

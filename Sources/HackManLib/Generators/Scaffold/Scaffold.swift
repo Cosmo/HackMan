@@ -1,5 +1,5 @@
+import Foundation
 import Stencil
-import FileProvider
 
 @objc(Scaffold)
 class Scaffold: NSObject, Generator {
