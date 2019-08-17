@@ -42,7 +42,7 @@ class ViewController: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
-        Writer.write(contents: rendered, toFile: "Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift")
+        Writer.createFile("Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift", contents: rendered)
     }
     
     func printUsage() {

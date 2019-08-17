@@ -51,6 +51,6 @@ class CoordinatorMain: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorMain.stf", context: context)
         
-        Writer.write(contents: rendered, toFile: "Source/Coordinator/MainCoordinator.swift")
+        Writer.createFile("Source/Coordinator/MainCoordinator.swift", contents: rendered)
     }
 }

@@ -47,6 +47,7 @@ public struct Run {
         switch command {
         case .new:
             NewProject().generate(arguments: arguments, options: options)
+            Writer.finish()
         case .generate:
             guard !arguments.isEmpty else { throw GeneratorCommandError.noGenerator }
             let generatorName = arguments.removeFirst().camelCased(.upper)
@@ -54,6 +55,7 @@ public struct Run {
                 throw GeneratorCommandError.unknownGenerator
             }
             generator.init().generate(arguments: arguments, options: options)
+            Writer.finish()
         case .help:
             print("Find help on: https://github.com/Cosmo/HackMan")
         case .unknown(let name):

@@ -9,12 +9,12 @@ class ReusableView: NSObject, Generator {
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ReusableView.stf")
-        Writer.write(contents: rendered, toFile: "Source/Protocols/ReusableView.swift")
+        Writer.createFile("Source/Protocols/ReusableView.swift", contents: rendered)
         
         let rendered2 = try! environment.renderTemplate(name: "UICollectionViewExtensions.stf")
-        Writer.write(contents: rendered2, toFile: "Source/Protocols/UICollectionViewExtensions.swift")
+        Writer.createFile("Source/Protocols/UICollectionViewExtensions.swift", contents: rendered2)
         
         let rendered3 = try! environment.renderTemplate(name: "UITableViewExtensions.stf")
-        Writer.write(contents: rendered3, toFile: "Source/Protocols/UITableViewExtensions.swift")
+        Writer.createFile("Source/Protocols/UITableViewExtensions.swift", contents: rendered3)
     }
 }

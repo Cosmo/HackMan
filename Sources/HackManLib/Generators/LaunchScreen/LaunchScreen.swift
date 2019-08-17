@@ -6,10 +6,10 @@ class LaunchScreen: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        let sourcePath = Path("\(path)/LaunchScreen.storyboard")
+        let url = URL(fileURLWithPath: "\(path)/LaunchScreen.storyboard")
+        let contents = try! String(contentsOf: url, encoding: String.Encoding.utf8)
         
         Writer.createPath("Source")
-        
-        try! sourcePath.copy("Source/LaunchScreen.storyboard")
+        Writer.createFile("Source/LaunchScreen.storyboard", contents: contents)
     }
 }

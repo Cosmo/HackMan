@@ -42,7 +42,7 @@ class CoordinatorChild: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.write(contents: rendered, toFile: "Source/Coordinator/\(resourceName.pluralized)Coordinator.swift")
+        Writer.createFile("Source/Coordinator/\(resourceName.pluralized)Coordinator.swift", contents: rendered)
     }
     
     func printUsage() {

@@ -28,7 +28,7 @@ class Model: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Model.stf", context: context)
         
-        Writer.write(contents: rendered, toFile: "Source/Models/\(resourceName).swift")
+        Writer.createFile("Source/Models/\(resourceName).swift", contents: rendered)
     }
     
     func printUsage() {

@@ -10,6 +10,6 @@ class AppDelegate: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "AppDelegate.stf")
         
-        Writer.write(contents: rendered, toFile: "Source/AppDelegate.swift")
+        Writer.createFile("Source/AppDelegate.swift", contents: rendered)
     }
 }

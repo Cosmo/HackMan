@@ -9,10 +9,10 @@ class ViewControllerInformation: NSObject, Generator {
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ViewControllerInformation.stf")
-        Writer.write(contents: rendered, toFile: "Source/ViewControllers/InformationViewController.swift")
+        Writer.createFile("Source/ViewControllers/InformationViewController.swift", contents: rendered)
         
         let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf")
-        Writer.write(contents: rendered2, toFile: "Source/Coordinator/InformationCoordinator.swift")
+        Writer.createFile("Source/Coordinator/InformationCoordinator.swift", contents: rendered2)
         
         ViewControllerWeb().generate(arguments: arguments, options: options)
     }
