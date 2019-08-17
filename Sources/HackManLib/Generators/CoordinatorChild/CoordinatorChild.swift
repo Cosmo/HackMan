@@ -37,7 +37,6 @@ class CoordinatorChild: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        try? FileManager().createDirectory(atPath: "Source/Coordinator", withIntermediateDirectories: true, attributes: nil)
-        try? rendered.write(toFile: "Source/Coordinator/\(resourceName.pluralized)Coordinator.swift", atomically: true, encoding: String.Encoding.utf8)
+        Writer.write(contents: rendered, toFile: "Source/Coordinator/\(resourceName.pluralized)Coordinator.swift")
     }
 }

@@ -23,7 +23,6 @@ class Model: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Model.stf", context: context)
         
-        try? FileManager().createDirectory(atPath: "Source/Models", withIntermediateDirectories: true, attributes: nil)
-        try? rendered.write(toFile: "Source/Models/\(resourceName).swift", atomically: true, encoding: String.Encoding.utf8)
+        Writer.write(contents: rendered, toFile: "Source/Models/\(resourceName).swift")
     }
 }
