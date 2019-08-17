@@ -1,5 +1,4 @@
 import Foundation
-import PathKit
 
 @objc(LaunchScreen)
 class LaunchScreen: NSObject, Generator {
@@ -10,6 +9,6 @@ class LaunchScreen: NSObject, Generator {
         let contents = try! String(contentsOf: url, encoding: String.Encoding.utf8)
         
         Writer.createPath("Source")
-        Writer.createFile("Source/LaunchScreen.storyboard", contents: contents)
+        Writer.createFile("Source/LaunchScreen.storyboard", contents: contents, options: options)
     }
 }

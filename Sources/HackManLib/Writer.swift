@@ -17,16 +17,16 @@ struct Writer {
     struct Directory: Writeable, Hashable {
         var path: String
         func create() {
-            guard let directory = path.split(separator: "/").last else { fatalError() }
+            guard let directoryName = path.split(separator: "/").last else { fatalError() }
             
             let depth = path.split(separator: "/").count
             let indention = String(repeating: "  ", count: depth)
-
+            
             if Path(path).exists {
-                print("   skip \(indention)\(directory)")
+                print("    \("invoke".colored(.white)) \(indention)\(directoryName)")
             } else {
                 try? FileManager().createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-                print(" create \(indention)\(directory)")
+                print("    \("create".colored(.green)) \(indention)\(directoryName)")
             }
         }
     }
@@ -34,14 +34,39 @@ struct Writer {
     struct File: Writeable, Hashable {
         var path: String
         var contents: String
+        var isForced: Bool = false
+        
         func create() {
             let paths = path.split(separator: "/")
+            guard let fileName = paths.last else { return }
+            let indention = String(repeating: "  ", count: paths.count)
+            var isAllowedToWrite = false
+            var isConflictPresent = false
             
-            if let file = paths.last {
-                let indention = String(repeating: "  ", count: paths.count)
-                print(" create \(indention)\(file)")
+            if Path(path).exists {
+                if let oldContents: String = try? Path(path).read(String.Encoding.utf8), oldContents == contents {
+                    print(" \("identical".colored(.green)) \(indention)\(fileName)")
+                } else if isForced {
+                    print("    \("forced".colored(.red)) \(indention)\(fileName)")
+                    isAllowedToWrite = true
+                } else {
+                    print("  \("conflict".colored(.red)) \(indention)\(fileName)")
+                    isConflictPresent = true
+                }
+            } else {
+                print("    \("create".colored(.green)) \(indention)\(fileName)")
+                isAllowedToWrite = true
             }
             
+            if isConflictPresent {
+                print("Overwrite \(fileName)? Enter [y/n]: ", terminator: "")
+                if readLine() == "y" {
+                    print(" \("overwrite".colored(.yellow)) \(indention)\(fileName)")
+                    isAllowedToWrite = true
+                }
+            }
+            
+            guard isAllowedToWrite else { return }
             try? contents.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
         }
     }
@@ -68,9 +93,12 @@ struct Writer {
         }
     }
     
-    static func createFile(_ path: String, contents: String) {
+    static func createFile(_ path: String, contents: String, options: [String] = []) {
         createPath(basePath(of: path))
-        creatables.append(File(path: path, contents: contents))
+        
+        let isForced = options.contains("--force") || options.contains("-f")
+        
+        creatables.append(File(path: path, contents: contents, isForced: isForced))
     }
     
     static func finish() {

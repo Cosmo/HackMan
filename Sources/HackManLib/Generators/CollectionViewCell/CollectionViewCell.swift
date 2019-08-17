@@ -24,7 +24,7 @@ class CollectionViewCell: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CollectionViewCell.stf", context: context)
         
-        Writer.createFile("Source/Views/Cells/\(resourceName)CollectionViewCell.swift", contents: rendered)
+        Writer.createFile("Source/Views/Cells/\(resourceName)CollectionViewCell.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

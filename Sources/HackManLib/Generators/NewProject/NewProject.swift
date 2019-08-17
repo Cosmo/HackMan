@@ -41,10 +41,10 @@ class NewProject: NSObject, Generator {
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "project.yml", context: context)
-        Writer.createFile("\(projectName)/project.yml", contents: rendered)
+        Writer.createFile("\(projectName)/project.yml", contents: rendered, options: options)
         
         let rendered2 = try! environment.renderTemplate(name: "gitignore", context: context)
-        Writer.createFile("\(projectName)/.gitignore", contents: rendered2)
+        Writer.createFile("\(projectName)/.gitignore", contents: rendered2, options: options)
         
         print()
         print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
