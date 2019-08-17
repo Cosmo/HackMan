@@ -43,10 +43,10 @@ echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.bashrc
 
 ```
 # Create new project directory including a "project.yml" for xcodegen
-hackman new [AppName]
+hackman new APP_NAME
 
 # Change into your project directory
-cd [AppName]
+cd APP_NAME
 ```
 
 ### Generators
@@ -54,6 +54,13 @@ cd [AppName]
 Run these generators inside of your project directory.
 
 ```
+# Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
+hackman generate scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+# By default, the scaffold will be UICollectionView based.
+# In order to create UITableView based scaffolds, pass the --view=table at the end.
+# Like so:
+hackman generate scaffold song title:string year:int --view=table
+
 # Create an AppDelegate
 hackman generate app_delegate
 
@@ -73,41 +80,34 @@ hackman generate coordinator
 hackman generate coordinator_main
 
 # Create a Child-Coordinator with the given name
-hackman generate coordinator_child [Name]
+hackman generate coordinator_child NAME
 
 # Create a Model with the given name and properties
-hackman generate model [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a UIViewController-Subclass with the given name
-hackman generate view_controller [Name]
+hackman generate view_controller NAME
 
 # Create a ViewControllerCollection (UIViewController-Subclass with a UICollectionView) and UICollectionViewDataSource
-hackman generate view_controller_collection [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate view_controller_collection NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a UICollectionViewCell-Subclass with the given namen and properties as UILabels
-hackman generate collection_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a ViewControllerTable (UIViewController-Subclass with a UITableView) and UITableViewDataSource
-hackman generate view_controller_table [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a UITableViewCell-Subclass with the given namen and properties as UILabels
-hackman generate table_view_cell [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate table_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a ViewControllerDetail (UIViewController-Subclass) with the given namen and properties as UILabels
-hackman generate view_controller_detail [Name] [Property1]:[Type] [Property2]:[Type] …
+hackman generate view_controller_detail NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # Create a UIViewController-Subclass with a UIWebView
 hackman generate view_controller_web
 
 # Create a UIViewController-Subclass with entry points for legal documents
 hackman generate view_controller_information
-
-# Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
-hackman generate scaffold [Name] [Property1]:[Type] [Property2]:[Type] …
-# By default, the scaffold will be UICollectionView based.
-# In order to create UITableView based scaffolds, pass the --view=table at the end.
-# Like so:
-hackman generate scaffold Song title:string year:Int --view=table
 ```
 
 You can also write `hackman g` instead of `hackman generate`.
@@ -117,7 +117,7 @@ You can also write `hackman g` instead of `hackman generate`.
 When creating scaffolds, models, controllers you can also specify multiple fields to be generated automatically
 
 ```
-hackman g scaffold Author name:string birthday:date
+hackman g scaffold author name:string birthday:date
 ```
 This commands creates among other things a struct of type `Author` with the following properties.
 ```
@@ -139,7 +139,7 @@ This will generate the following properties inside of the `Article` model.
 
 If you omit the property type, `hackman` assumes you want a property of type `String`.
 ```
-hackman g scaffold Article title body published_at:date author:author
+hackman g scaffold article title body published_at:date author:author
 ```
 
 
