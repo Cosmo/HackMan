@@ -11,16 +11,30 @@ Hackman is heavily inspired by the `rails` command.
 
 ## Installation
 
-Clone and build
+### Clone and build
+
 ```
 git clone git@github.com:Cosmo/HackMan.git
 cd HackMan
 swift build -c release
 ```
 
-Add the `hackman` executable to your path.
+### Add `hackman` executable to your `PATH`.
+
 ```
 PATH=$PATH:$(pwd)/.build/release
+```
+
+or make it persistent
+
+For `zsh` Users (default on macOS Catalina)
+```
+echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.zshrc
+```
+
+For `bash` Users (default on macOS Mojave)
+```
+echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.bashrc
 ```
 
 ## Usage
