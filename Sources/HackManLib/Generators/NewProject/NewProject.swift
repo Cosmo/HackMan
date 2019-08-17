@@ -6,6 +6,11 @@ class NewProject: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let projectName = arguments.removeFirst()
         
@@ -40,5 +45,15 @@ class NewProject: NSObject, Generator {
         
         let rendered2 = try! environment.renderTemplate(name: "gitignore", context: context)
         Writer.write(contents: rendered2, toFile: "\(projectName)/.gitignore")
+        
+        print()
+        print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman new APP_NAME")
+        print()
+        print("Example:")
+        print("  hackman new AwesomeApp")
     }
 }

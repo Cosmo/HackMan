@@ -6,6 +6,11 @@ class ViewController: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         
@@ -38,5 +43,12 @@ class ViewController: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
         Writer.write(contents: rendered, toFile: "Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman generate view_controller NAME")
+        print()
+        print("Example:")
+        print("  hackman generate view_controller song")
     }
 }

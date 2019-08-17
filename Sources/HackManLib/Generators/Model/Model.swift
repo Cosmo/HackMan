@@ -6,6 +6,11 @@ class Model: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         let properties = Property.createList(inputStrings: arguments)
@@ -24,5 +29,12 @@ class Model: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "Model.stf", context: context)
         
         Writer.write(contents: rendered, toFile: "Source/Models/\(resourceName).swift")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman generate model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+        print()
+        print("Example:")
+        print("  hackman generate model song title:string artist_name:string album_name:string")
     }
 }

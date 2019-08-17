@@ -6,6 +6,11 @@ class CollectionViewCell: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         let properties = Property.createList(inputStrings: arguments)
@@ -20,5 +25,12 @@ class CollectionViewCell: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "CollectionViewCell.stf", context: context)
         
         Writer.write(contents: rendered, toFile: "Source/Views/Cells/\(resourceName)CollectionViewCell.swift")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman generate collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+        print()
+        print("Example:")
+        print("  hackman generate collection_view_cell song title:string artist_name:string album_name:string")
     }
 }

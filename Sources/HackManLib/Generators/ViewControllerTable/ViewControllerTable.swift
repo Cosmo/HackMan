@@ -6,6 +6,11 @@ class ViewControllerTable: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         let properties = Property.createList(inputStrings: arguments)
@@ -43,5 +48,12 @@ class ViewControllerTable: NSObject, Generator {
         
         let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
         Writer.write(contents: rendered2, toFile: "Source/ViewControllers/\(resourceName.pluralized)/\(resourceName)ResultsViewController.swift")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman generate view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+        print()
+        print("Example:")
+        print("  hackman generate view_controller_table song title:string artist_name:string album_name:string")
     }
 }

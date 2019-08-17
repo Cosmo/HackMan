@@ -6,6 +6,11 @@ class CoordinatorChild: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        guard !arguments.isEmpty else {
+            printUsage()
+            exit(0)
+        }
+        
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         
@@ -38,5 +43,12 @@ class CoordinatorChild: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
         Writer.write(contents: rendered, toFile: "Source/Coordinator/\(resourceName.pluralized)Coordinator.swift")
+    }
+    
+    func printUsage() {
+        print("Usage: hackman generate coordinator_child NAME")
+        print()
+        print("Example:")
+        print("  hackman generate coordinator_child song")
     }
 }
