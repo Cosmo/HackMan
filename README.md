@@ -56,75 +56,167 @@ Run these generators inside of your project directory.
 ```sh
 # Create an AppDelegate
 hackman generate app_delegate
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create an empty AssetCatalog
 hackman generate asset_catalog
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a LaunchScreen-Storyboard
 hackman generate launch_screen
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a ReusableView protocol and useful extensions for UICollectionViews and UITableViews
 hackman generate reusable_view
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a Coordinator protocol
 hackman generate coordinator
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a MainCoordinator
 hackman generate coordinator_main
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a Child-Coordinator with the given name
 hackman generate coordinator_child NAME
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a Model with the given name and properties
 hackman generate model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a UIViewController-Subclass with the given name
 hackman generate view_controller NAME
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a ViewControllerCollection (UIViewController-Subclass with a UICollectionView) and UICollectionViewDataSource
 hackman generate view_controller_collection NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a UICollectionViewCell-Subclass with the given namen and properties as UILabels
 hackman generate collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a ViewControllerTable (UIViewController-Subclass with a UITableView) and UITableViewDataSource
 hackman generate view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a UITableViewCell-Subclass with the given namen and properties as UILabels
 hackman generate table_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a ViewControllerDetail (UIViewController-Subclass) with the given namen and properties as UILabels
 hackman generate view_controller_detail NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a UIViewController-Subclass with a UIWebView
 hackman generate view_controller_web
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+
+  --force, -f
+    Force override existing files
 ```
 ```sh
 # Create a UIViewController-Subclass with entry points for legal documents
 hackman generate view_controller_information
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+  
+  --force, -f
+    Force override existing files
 ```
 ```sh
-# Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
+# Create Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
 hackman generate scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # By default, the scaffold will be UICollectionView based.
 # In order to create UITableView based scaffolds, pass the --view=table at the end.
 # Like so:
 hackman generate scaffold song title:string year:int --view=table
+
+Options
+  --coordinator, -c
+    Adds coordinator support
+    
+  --force, -f
+    Force override existing files
 ```
 
 You can also write `hackman g` instead of `hackman generate`.
@@ -165,13 +257,14 @@ hackman g scaffold article title body published_at:date author:author
 ```sh
 hackman new MusicApp
 cd MusicApp
-hackman g scaffold artist name
-hackman g scaffold song title year:int
-hackman g scaffold album name uuid artist:artist created_at:date updated_at:date
-hackman g view_controller_information
-hackman g coordinator_main song artist album --include=information
+hackman g app_delegate --coordinator
 hackman g asset_catalog
 hackman g launch_screen
+hackman g scaffold artist name --coordinator
+hackman g scaffold song title year:int --coordinator
+hackman g scaffold album name uuid artist:artist created_at:date updated_at:date --coordinator
+hackman g view_controller_information --coordinator
+hackman g coordinator_main song artist album --include=information
 xcodegen
 open MusicApp.xcodeproj
 ```

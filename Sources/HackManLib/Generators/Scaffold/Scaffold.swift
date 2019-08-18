@@ -11,7 +11,6 @@ class Scaffold: NSObject, Generator {
             exit(0)
         }
         
-        AppDelegate().generate(arguments: arguments, options: options)
         ReusableView().generate(arguments: arguments, options: options)
         Model().generate(arguments: arguments, options: options)
         ViewControllerDetail().generate(arguments: arguments, options: options)
@@ -26,7 +25,6 @@ class Scaffold: NSObject, Generator {
         
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         if containsCoordinator {
-            CoordinatorMain().generate(arguments: arguments, options: options)
             CoordinatorChild().generate(arguments: arguments, options: options)
         }
     }
