@@ -15,23 +15,23 @@ let options = arguments.filter { $0.starts(with: "-") }
 arguments = arguments.filter { !options.contains($0) }
 
 do {
-    try _ = Run(arguments: arguments, options: options)
-} catch let error as Run.CommandError {
+    try _ = CommandLineRunner(arguments: arguments, options: options)
+} catch let error as CommandLineRunner.CommandError {
     switch error {
-    case Run.CommandError.noCommand:
-        Run.printCommandUsage()
+    case CommandLineRunner.CommandError.noCommand:
+        CommandLineRunner.printCommandUsage()
     case .unknownCommand(let name):
         print("Unknown command \"\(name)\".")
         print()
-        Run.printCommandUsage()
+        CommandLineRunner.printCommandUsage()
     }
-} catch let error as Run.GeneratorCommandError {
+} catch let error as CommandLineRunner.GeneratorCommandError {
     switch error {
     case .noGenerator:
-        Run.printGeneratorUsage()
+        CommandLineRunner.printGeneratorUsage()
     case .unknownGenerator:
         print("Unknown generator.")
         print()
-        Run.printGeneratorUsage()
+        CommandLineRunner.printGeneratorUsage()
     }
 }

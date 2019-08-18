@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Run {
+public struct CommandLineRunner {
     public enum Command {
         case new
         case generate
@@ -64,7 +64,7 @@ public struct Run {
     }
 }
 
-extension Run {
+extension CommandLineRunner {
     public enum CommandError: Error {
         case noCommand
         case unknownCommand(name: String)
@@ -83,7 +83,7 @@ extension Run {
     }
 }
 
-extension Run {
+extension CommandLineRunner {
     public enum GeneratorCommandError: Error {
         case noGenerator
         case unknownGenerator
