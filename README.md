@@ -118,7 +118,7 @@ hackman generate view_controller_web
 hackman generate view_controller_information
 ```
 ```sh
-# Create AppDelegate, Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, MainCoordinator, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
+# Create Model, UICollectionView/UITableView Extensions, UIViewController with UICollectionView/UITableView, ViewControllerDetail, ChildCoordinator, Coordinator Protocol and ReusableView Protocol
 hackman generate scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # By default, the scaffold will be UICollectionView based.
@@ -165,13 +165,14 @@ hackman g scaffold article title body published_at:date author:author
 ```sh
 hackman new MusicApp
 cd MusicApp
-hackman g scaffold artist name
-hackman g scaffold song title year:int
-hackman g scaffold album name uuid artist:artist created_at:date updated_at:date
-hackman g view_controller_information
-hackman g coordinator_main song artist album --include=information
+hackman g app_delegate --coordinator
 hackman g asset_catalog
 hackman g launch_screen
+hackman g scaffold artist name --coordinator
+hackman g scaffold song title year:int --coordinator
+hackman g scaffold album name uuid artist:artist created_at:date updated_at:date --coordinator
+hackman g view_controller_information --coordinator
+hackman g coordinator_main song artist album --include=information
 xcodegen
 open MusicApp.xcodeproj
 ```
