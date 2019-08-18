@@ -13,7 +13,7 @@ Hackman is heavily inspired by the `rails` command.
 
 ### Clone and build
 
-```
+```sh
 git clone git@github.com:Cosmo/HackMan.git
 cd HackMan
 swift build -c release
