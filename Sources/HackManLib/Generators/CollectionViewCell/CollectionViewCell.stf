@@ -12,18 +12,18 @@ class {{ resourceName }}CollectionViewCell: UICollectionViewCell {
     }()
     
     {% for property in properties %}
-        lazy var {{ property.name }}Label: UILabel = {
-            let label = UILabel()
-            {% if forloop.counter == 0 %}
-            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
-            {% elif forloop.counter == 1 %}
-            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
-            {% else %}
-            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
-            {% endif %}
-            label.numberOfLines = 0
-            return label
-            }()
+    lazy var {{ property.name }}Label: UILabel = {
+        let label = UILabel()
+        {% if forloop.counter == 0 %}
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
+        {% elif forloop.counter == 1 %}
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        {% else %}
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
+        {% endif %}
+        label.numberOfLines = 0
+        return label
+    }()
     {% endfor %}
     
     override init(frame: CGRect) {
