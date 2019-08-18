@@ -8,7 +8,12 @@ class ViewControllerWeb: NSObject, Generator {
     func generate(arguments: [String], options: [String]) {
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
-        let rendered = try! environment.renderTemplate(name: "ViewControllerWeb.stf")
+        let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
+        let context: [String: Any] = [
+            "coordinator": containsCoordinator
+        ]
+        
+        let rendered = try! environment.renderTemplate(name: "ViewControllerWeb.stf", context: context)
         
         Writer.createFile("Source/ViewControllers/Generic/WebViewController.swift", contents: rendered, options: options)
     }

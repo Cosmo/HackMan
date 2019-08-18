@@ -5,7 +5,9 @@
 import UIKit
 
 class {{ resourceName | pluralized }}ViewController: UIViewController {
+    {% if coordinator %}
     weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    {% endif %}
     
     lazy var searchController: UISearchController = {
         let searchResultsController = SongResultsViewController()
@@ -116,7 +118,9 @@ extension {{ resourceName | pluralized }}ViewController: UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Tells the delegate that the item at the specified index path was selected.
         print("Selected item \(indexPath.item) in section \(indexPath.section)")
+        {% if coordinator %}
         coordinator?.detail({{ resourceName | lowerCamelCased }}: {{ resourceName | pluralized | lowerCamelCased }}[indexPath.item])
+        {% endif %}
     }
 }
 

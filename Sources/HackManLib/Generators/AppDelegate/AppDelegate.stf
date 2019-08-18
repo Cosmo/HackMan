@@ -8,10 +8,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        {% if coordinator %}
         let coordinator = MainCoordinator(tabBarController: UITabBarController())
         coordinator.start()
         
         window?.rootViewController = coordinator.containerController
+        {% else %}
+        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
+        {% endif %}
         window?.makeKeyAndVisible()
         
         return true

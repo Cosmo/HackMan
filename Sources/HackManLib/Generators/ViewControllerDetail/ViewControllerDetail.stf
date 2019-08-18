@@ -1,7 +1,9 @@
 import UIKit
 
 class {{ resourceName }}ViewController: UIViewController {
+    {% if coordinator %}
     weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    {% endif %}
     var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
     
     var stackView: UIStackView = {
@@ -82,7 +84,9 @@ class {{ resourceName }}ViewController: UIViewController {
 {% if property.isLinkable %}
 extension {{ resourceName }}ViewController {
     @objc func {{ property.name | lowerCamelCased }}ButtonAction(sender: UIButton) {
+        {% if coordinator %}
         (coordinator?.parent as? MainCoordinator)?.select{{ property.name | upperCamelCased }}({{ property.name }}: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+        {% endif %}
     }
 }
 {% endif %}

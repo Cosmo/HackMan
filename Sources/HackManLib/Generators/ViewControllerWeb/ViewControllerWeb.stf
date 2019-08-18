@@ -3,7 +3,9 @@ import WebKit
 import SafariServices
 
 class WebViewController: UIViewController {
+    {% if coordinator %}
     weak var coordinator: InformationCoordinator?
+    {% endif %}
     var url: URL?
     
     lazy var webView: WKWebView = {

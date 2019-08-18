@@ -5,7 +5,9 @@
 import UIKit
 
 class {{ resourceName | pluralized }}ViewController: UIViewController {
+    {% if coordinator %}
     weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    {% endif %}
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero)

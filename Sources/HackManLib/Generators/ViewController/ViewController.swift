@@ -14,8 +14,11 @@ class ViewController: NSObject, Generator {
         var arguments = arguments
         let resourceName = arguments.removeFirst().camelCased(.upper)
         
-        let context = [
+        let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
+        
+        let context: [String: Any] = [
             "resourceName": resourceName,
+            "coordinator": containsCoordinator
         ]
         
         let ext = Extension()

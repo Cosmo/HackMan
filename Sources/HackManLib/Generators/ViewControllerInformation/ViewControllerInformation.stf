@@ -1,7 +1,9 @@
 import UIKit
 
 class InformationViewController: UIViewController {
+    {% if coordinator %}
     weak var coordinator: InformationCoordinator?
+    {% endif %}
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.grouped)
@@ -107,7 +109,9 @@ extension InformationViewController: UITableViewDataSource {
 
 extension InformationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        {% if coordinator %}
         coordinator?.detail(item: item(for: indexPath))
+        {% endif %}
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

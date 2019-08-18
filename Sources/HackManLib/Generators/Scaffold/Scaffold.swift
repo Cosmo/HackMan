@@ -13,7 +13,6 @@ class Scaffold: NSObject, Generator {
         
         AppDelegate().generate(arguments: arguments, options: options)
         ReusableView().generate(arguments: arguments, options: options)
-        Coordinator().generate(arguments: arguments, options: options)
         Model().generate(arguments: arguments, options: options)
         ViewControllerDetail().generate(arguments: arguments, options: options)
 
@@ -25,8 +24,11 @@ class Scaffold: NSObject, Generator {
             CollectionViewCell().generate(arguments: arguments, options: options)
         }
         
-        CoordinatorMain().generate(arguments: arguments, options: options)
-        CoordinatorChild().generate(arguments: arguments, options: options)
+        let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
+        if containsCoordinator {
+            CoordinatorMain().generate(arguments: arguments, options: options)
+            CoordinatorChild().generate(arguments: arguments, options: options)
+        }
     }
     
     func printUsage() {
