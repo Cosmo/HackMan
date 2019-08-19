@@ -98,11 +98,15 @@ Options
 ```
 ```sh
 # Create a MainCoordinator
-hackman generate coordinator_main
+hackman generate coordinator_main NAME NAME …
 
 Options
   --force, -f
     Force override existing files
+
+  --include=NAME,NAME,…
+    Include ViewControllers that were not generated via scaffold.
+    Names must be separated with commas. Spaces between names are not allowed.
 ```
 ```sh
 # Create a Child-Coordinator with the given name
