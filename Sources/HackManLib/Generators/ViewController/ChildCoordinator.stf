@@ -1,0 +1,17 @@
+import UIKit
+
+class {{ resourceName }}Coordinator: Coordinator {
+    var children = [Coordinator]()
+    var parent: Coordinator?
+    var containerController: UIViewController
+    
+    init(navigationController: UINavigationController) {
+        self.containerController = navigationController
+    }
+    
+    func start() {
+        let viewController = {{ resourceName }}ViewController()
+        viewController.coordinator = self
+        (containerController as? UINavigationController)?.pushViewController(viewController, animated: false)
+    }
+}
