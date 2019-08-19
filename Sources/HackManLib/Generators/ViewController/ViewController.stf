@@ -8,14 +8,12 @@ class {{ resourceName }}ViewController: UIViewController {
     {% if coordinator %}
     weak var coordinator: {{ resourceName }}Coordinator?
     {% endif %}
-    var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
     
-    convenience init({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
-        self.init(nibName: nil, bundle: nil, {{ resourceName | lowerCamelCased }}: {{ resourceName | lowerCamelCased }})
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
     }
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, {{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
-        self.{{ resourceName | lowerCamelCased }} = {{ resourceName | lowerCamelCased }}
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         commonInit()
     }

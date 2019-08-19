@@ -46,6 +46,11 @@ class ViewController: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
         Writer.createFile("Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift", contents: rendered, options: options)
+        
+        if containsCoordinator {
+            let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf", context: context)
+            Writer.createFile("Source/Coordinator/\(resourceName)Coordinator.swift", contents: rendered2, options: options)
+        }
     }
     
     func printUsage() {
