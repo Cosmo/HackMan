@@ -43,7 +43,7 @@ public struct CommandLineRunner {
             print("Options: \(options)")
             print()
         }
-        print(arguments)
+        
         switch command {
         case .new:
             NewProject().generate(arguments: arguments, options: options)
