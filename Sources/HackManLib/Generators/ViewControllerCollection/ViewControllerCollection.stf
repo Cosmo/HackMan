@@ -10,7 +10,7 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
     {% endif %}
     
     lazy var searchController: UISearchController = {
-        let searchResultsController = SongResultsViewController()
+        let searchResultsController = {{ resourceName }}ResultsViewController()
         searchResultsController.tableView.dataSource = self
         let searchController = UISearchController(searchResultsController: searchResultsController)
         // searchController.searchBar.scopeButtonTitles = ["All", "Option 1", "Option 2", "Other"]
@@ -143,7 +143,7 @@ extension {{ resourceName | pluralized }}ViewController {
 extension {{ resourceName | pluralized }}ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         // Called when the search bar's text or scope has changed or when the search bar becomes first responder.
-        (searchController.searchResultsController as? SongResultsViewController)?.tableView.reloadData()
+        (searchController.searchResultsController as? {{ resourceName }}ResultsViewController)?.tableView.reloadData()
     }
 }
 
