@@ -34,7 +34,7 @@ echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.zshrc
 
 For `bash` Users (default on macOS Mojave)
 ```sh
-echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.bashrc
+echo "export PATH=\"\$PATH:$(pwd)/.build/release\"" >> ~/.bash_profile
 ```
 
 ## Usage
