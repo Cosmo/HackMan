@@ -6,6 +6,8 @@ class CoordinatorMain: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         let resourceNames = arguments
         let resources = resourceNames
             .map { $0.camelCased(.upper) }
@@ -52,5 +54,12 @@ class CoordinatorMain: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "CoordinatorMain.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/MainCoordinator.swift", contents: rendered, options: options)
+    }
+    
+    func help() {
+        print("Usage: hackman generate coordinator_main")
+        print()
+        print("Example:")
+        print("  hackman generate coordinator_main")
     }
 }

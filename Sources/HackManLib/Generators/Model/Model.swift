@@ -6,6 +6,8 @@ class Model: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         guard !arguments.isEmpty else {
             printUsage()
             exit(0)
@@ -36,5 +38,9 @@ class Model: NSObject, Generator {
         print()
         print("Example:")
         print("  hackman generate model song title:string artist_name:string album_name:string")
+    }
+    
+    func help() {
+        printUsage()
     }
 }

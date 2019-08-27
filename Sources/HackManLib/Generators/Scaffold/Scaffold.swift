@@ -6,6 +6,8 @@ class Scaffold: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         guard !arguments.isEmpty else {
             printUsage()
             exit(0)
@@ -34,5 +36,9 @@ class Scaffold: NSObject, Generator {
         print()
         print("Example:")
         print("  hackman generate scaffold song title:string artist_name:string album_name:string")
+    }
+    
+    func help() {
+        printUsage()
     }
 }

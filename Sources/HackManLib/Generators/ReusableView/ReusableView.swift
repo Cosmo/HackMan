@@ -6,6 +6,8 @@ class ReusableView: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ReusableView.stf")
@@ -16,5 +18,12 @@ class ReusableView: NSObject, Generator {
         
         let rendered3 = try! environment.renderTemplate(name: "UITableViewExtensions.stf")
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/UITableViewExtensions.swift", contents: rendered3, options: options)
+    }
+    
+    func help() {
+        print("Usage: hackman generate reusable_view")
+        print()
+        print("Example:")
+        print("  hackman generate reusable_view")
     }
 }

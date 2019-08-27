@@ -6,6 +6,8 @@ class ViewController: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         guard !arguments.isEmpty else {
             printUsage()
             exit(0)
@@ -58,5 +60,9 @@ class ViewController: NSObject, Generator {
         print()
         print("Example:")
         print("  hackman generate view_controller song")
+    }
+    
+    func help() {
+        printUsage()
     }
 }

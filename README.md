@@ -286,7 +286,7 @@ open MusicApp.xcodeproj
 
 * [ ] Easier setup
 * [ ] Easy support for custom generators
-* [ ] Support for `help [command]`
+* [x] Add help (-h / --help)
 * [ ] SwiftUI based templates
 * [ ] Generator for localization
 

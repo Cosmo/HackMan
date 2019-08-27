@@ -6,6 +6,8 @@ class ViewControllerInformation: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         
@@ -24,5 +26,12 @@ class ViewControllerInformation: NSObject, Generator {
         }
         
         ViewControllerWeb().generate(arguments: arguments, options: options)
+    }
+    
+    func help() {
+        print("Usage: hackman generate view_controller_information")
+        print()
+        print("Example:")
+        print("  hackman generate view_controller_information")
     }
 }
