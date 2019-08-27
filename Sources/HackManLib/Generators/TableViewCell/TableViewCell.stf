@@ -40,7 +40,7 @@ class {{ resourceName }}TableViewCell: UITableViewCell {
         preservesSuperviewLayoutMargins = true
         contentView.preservesSuperviewLayoutMargins = true
         
-        contentView.backgroundColor = UIColor.lightGray
+        contentView.backgroundColor = UIColor.white
             
         {% for property in properties %}
         stackView.addArrangedSubview({{ property.name }}Label)
@@ -60,10 +60,10 @@ class {{ resourceName }}TableViewCell: UITableViewCell {
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        stackView.layoutMarginsGuide.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
+        stackView.layoutMarginsGuide.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
+        contentView.layoutMarginsGuide.bottomAnchor.constraint(equalTo: stackView.layoutMarginsGuide.bottomAnchor).isActive = true
+        contentView.layoutMarginsGuide.trailingAnchor.constraint(equalTo: stackView.layoutMarginsGuide.trailingAnchor).isActive = true
     }
 }
 
