@@ -6,6 +6,8 @@ class AppDelegate: NSObject, Generator {
     required override init() {}
 
     func generate(arguments: [String], options: [String]) {
+        showHelpIfNeeded(options: options)
+        
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         
@@ -22,5 +24,12 @@ class AppDelegate: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "AppDelegate.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/AppDelegate.swift", contents: rendered, options: options)
+    }
+    
+    func help() {
+        print("Usage: hackman generate app_delegate")
+        print()
+        print("Example:")
+        print("  hackman generate app_delegate")
     }
 }
