@@ -60,6 +60,20 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            transitionCoordinator?.animate(alongsideTransition: { context in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }, completion: { context in
+                if context.isCancelled {
+                    self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                }
+            })
+        }
+    }
+    
     func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
