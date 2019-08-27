@@ -100,5 +100,11 @@ extension {{ resourceName | pluralized }}ViewController: UITableViewDataSource {
 }
 
 extension {{ resourceName | pluralized }}ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Tells the delegate that the item at the specified index path was selected.
+        print("Selected item \(indexPath.item) in section \(indexPath.section)")
+        {% if coordinator %}
+        coordinator?.detail({{ resourceName | lowerCamelCased }}: {{ resourceName | pluralized | lowerCamelCased }}[indexPath.row])
+        {% endif %}
+    }
 }
