@@ -45,11 +45,11 @@ class ViewController: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
-        Writer.createFile("Source/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift", contents: rendered, options: options)
         
         if containsCoordinator {
             let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf", context: context)
-            Writer.createFile("Source/Coordinator/\(resourceName)Coordinator.swift", contents: rendered2, options: options)
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName)Coordinator.swift", contents: rendered2, options: options)
         }
     }
     

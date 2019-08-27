@@ -47,10 +47,10 @@ class ViewControllerCollection: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerCollection.stf", context: context)
-        Writer.createFile("Source/ViewControllers/\(resourceName.pluralized)/\(resourceName.pluralized)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized)/\(resourceName.pluralized)ViewController.swift", contents: rendered, options: options)
         
         let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
-        Writer.createFile("Source/ViewControllers/\(resourceName.pluralized)/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized)/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
     }
     
     func printUsage() {

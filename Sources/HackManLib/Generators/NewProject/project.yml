@@ -11,7 +11,7 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "12.1"
-    sources: [Source]
+    sources: [{{ source }}]
     scheme:
       configVariants:
         - Enterprise

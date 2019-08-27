@@ -15,6 +15,6 @@ class ViewControllerWeb: NSObject, Generator {
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerWeb.stf", context: context)
         
-        Writer.createFile("Source/ViewControllers/Generic/WebViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/Generic/WebViewController.swift", contents: rendered, options: options)
     }
 }

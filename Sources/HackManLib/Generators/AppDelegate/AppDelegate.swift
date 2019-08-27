@@ -21,6 +21,6 @@ class AppDelegate: NSObject, Generator {
         
         let rendered = try! environment.renderTemplate(name: "AppDelegate.stf", context: context)
         
-        Writer.createFile("Source/AppDelegate.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/AppDelegate.swift", contents: rendered, options: options)
     }
 }
