@@ -48,7 +48,7 @@ struct Property: Equatable {
     }
     
     var isLinkable: Bool {
-        return !(["String", "Int", "Date"].contains(valueType) || isArray)
+        return !(["String", "Int", "Date", "Bool"].contains(valueType) || isArray)
     }
     
     func mock(string: String?) -> String {
@@ -60,6 +60,8 @@ struct Property: Equatable {
             return "\"\(string)\""
         case "Int":
             return String(Int.random(in: 1..<100))
+        case "Bool":
+            return Int.random(in: 0...1) == 1 ? "true" : "false"
         case "Date":
             return "Date()"
         default:
