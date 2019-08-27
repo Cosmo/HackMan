@@ -8,15 +8,25 @@
 import Foundation
 import PathKit
 
-protocol Writeable {
+public protocol Writeable {
     var path: String { get }
     func create()
 }
 
-struct Writer {
-    struct Directory: Writeable, Hashable {
-        var path: String
-        func create() {
+public struct Writer {
+    static var creatables: [Writeable] = []
+    
+    public static func extractSourcePath(options: [String]) -> String {
+        if let result = (options.filter { $0.contains("--source") || $0.contains("-s") }).first?.split(separator: "=").last {
+            return String(result)
+        } else {
+            return "Source"
+        }
+    }
+    
+    public struct Directory: Writeable, Hashable {
+        public var path: String
+        public func create() {
             guard let directoryName = path.split(separator: "/").last else { fatalError() }
             
             let depth = path.split(separator: "/").count
@@ -31,12 +41,12 @@ struct Writer {
         }
     }
 
-    struct File: Writeable, Hashable {
-        var path: String
+    public struct File: Writeable, Hashable {
+        public var path: String
         var contents: String
         var isForced: Bool = false
         
-        func create() {
+        public func create() {
             let paths = path.split(separator: "/")
             guard let fileName = paths.last else { return }
             let indention = String(repeating: "  ", count: paths.count)
@@ -71,15 +81,13 @@ struct Writer {
         }
     }
     
-    static var creatables: [Writeable] = []
-    
-    static func basePath(of filePath: String) -> String {
+    public static func basePath(of filePath: String) -> String {
         var directories = filePath.split(separator: "/")
         directories.removeLast()
         return directories.joined(separator: "/")
     }
     
-    static func createPath(_ path: String) {
+    public static func createPath(_ path: String) {
         var previousPath: String?
         for path in path.split(separator: "/") {
             let nextPath = [previousPath, String(path)].compactMap { $0 }.joined(separator: "/")
@@ -93,7 +101,7 @@ struct Writer {
         }
     }
     
-    static func createFile(_ path: String, contents: String, options: [String] = []) {
+    public static func createFile(_ path: String, contents: String, options: [String] = []) {
         createPath(basePath(of: path))
         
         let isForced = options.contains("--force") || options.contains("-f")
@@ -101,7 +109,7 @@ struct Writer {
         creatables.append(File(path: path, contents: contents, isForced: isForced))
     }
     
-    static func finish() {
+    public static func finish() {
         for creatable in creatables.sorted(by: { $0.path < $1.path }) {
             creatable.create()
         }

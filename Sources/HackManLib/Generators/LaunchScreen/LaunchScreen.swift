@@ -9,6 +9,6 @@ class LaunchScreen: NSObject, Generator {
         let contents = try! String(contentsOf: url, encoding: String.Encoding.utf8)
         
         Writer.createPath("Source")
-        Writer.createFile("Source/LaunchScreen.storyboard", contents: contents, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/LaunchScreen.storyboard", contents: contents, options: options)
     }
 }

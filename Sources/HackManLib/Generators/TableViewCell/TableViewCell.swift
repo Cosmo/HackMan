@@ -24,7 +24,7 @@ class TableViewCell: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "TableViewCell.stf", context: context)
         
-        Writer.createFile("Source/Views/Cells/\(resourceName)TableViewCell.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resourceName)TableViewCell.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

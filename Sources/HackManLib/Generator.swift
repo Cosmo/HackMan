@@ -8,7 +8,7 @@
 import Foundation
 import PathKit
 
-protocol Generator {
+public protocol Generator {
     init()
     func generate(arguments: [String], options: [String])
 }

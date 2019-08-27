@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TerminalColor: String {
+public enum TerminalColor: String {
     case black = "\u{001B}[0;30m"
     case red = "\u{001B}[0;31m"
     case green = "\u{001B}[0;32m"

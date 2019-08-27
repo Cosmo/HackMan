@@ -10,6 +10,6 @@ class Coordinator: NSObject, Generator {
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Coordinator.stf")
         
-        Writer.createFile("Source/Protocols/Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/Coordinator.swift", contents: rendered, options: options)
     }
 }

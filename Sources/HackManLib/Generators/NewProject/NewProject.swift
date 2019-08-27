@@ -16,6 +16,7 @@ class NewProject: NSObject, Generator {
         
         let context = [
             "projectName": projectName,
+            "source": Writer.extractSourcePath(options: options)
         ]
         
         let ext = Extension()
