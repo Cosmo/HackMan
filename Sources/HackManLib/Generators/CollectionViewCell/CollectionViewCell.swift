@@ -14,7 +14,7 @@ class CollectionViewCell: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCased(.upper)
+        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
         let properties = Property.createList(inputStrings: arguments)
         
         let context: [String: Any] = [

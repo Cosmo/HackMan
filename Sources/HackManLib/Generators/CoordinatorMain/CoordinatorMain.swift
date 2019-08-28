@@ -10,7 +10,7 @@ class CoordinatorMain: NSObject, Generator {
         
         let resourceNames = arguments
         let resources = resourceNames
-            .map { $0.camelCased(.upper) }
+            .map { $0.camelCasedIfNeeded(.upper) }
             .map { ["name": $0, "pluralName": String($0).pluralized, "className": String($0) + "ViewController" ] }
         
         var children = resources
@@ -18,7 +18,7 @@ class CoordinatorMain: NSObject, Generator {
         
         if let result = (options.filter { $0.contains("include") }).first?.split(separator: "=").last {
             for additionalControllerName in result.split(separator: ",") {
-                let additionalControllerName = String(additionalControllerName).camelCased(.upper)
+                let additionalControllerName = String(additionalControllerName).camelCasedIfNeeded(.upper)
                 children.append("\(additionalControllerName)Coordinator(navigationController: UINavigationController())")
             }
         }
@@ -38,13 +38,13 @@ class CoordinatorMain: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCased(.upper)
+                return value.camelCasedIfNeeded(.upper)
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCased(.lower)
+                return value.camelCasedIfNeeded(.lower)
             }
             return value
         }
