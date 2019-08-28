@@ -14,7 +14,7 @@ class ViewControllerTable: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCased(.upper)
+        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
         let properties = Property.createList(inputStrings: arguments)
         
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
@@ -34,13 +34,13 @@ class ViewControllerTable: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCased(.upper)
+                return value.camelCasedIfNeeded(.upper)
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCased(.lower)
+                return value.camelCasedIfNeeded(.lower)
             }
             return value
         }

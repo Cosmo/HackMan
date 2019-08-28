@@ -14,7 +14,7 @@ struct Property: Equatable {
     
     init(name: String, valueType: String, isArray: Bool = false) {
         self.name = name
-        self.valueType = valueType.camelCased(String.letterCase.upper)
+        self.valueType = valueType.camelCasedIfNeeded(String.letterCase.upper)
         self.isArray = isArray
     }
     
@@ -24,7 +24,7 @@ struct Property: Equatable {
         let valueTypeSubsequence = (splitStrings.count > 1 ? splitStrings[1] : "String")
         
         var name = String(nameSubsequence ?? "Invalid property name.")
-        let valueType = String(valueTypeSubsequence).camelCased(.upper)
+        let valueType = String(valueTypeSubsequence).camelCasedIfNeeded(.upper)
         var isArray = false
         
         if name.hasSuffix("s") {
@@ -32,7 +32,7 @@ struct Property: Equatable {
             name.removeLast()
         }
         
-        self.name = name.camelCased(.lower)
+        self.name = name.camelCasedIfNeeded(.lower)
         self.valueType = valueType
         self.isArray = isArray
     }

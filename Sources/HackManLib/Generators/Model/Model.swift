@@ -14,7 +14,7 @@ class Model: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCased(.upper)
+        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
         let properties = Property.createList(inputStrings: arguments)
         
         let strings = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven"]
