@@ -1,0 +1,1427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"HackMan::HackManPackageTests::ProductTarget" /* HackManPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_154 /* Build configuration list for PBXAggregateTarget "HackManPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_157 /* PBXTargetDependency */,
+			);
+			name = HackManPackageTests;
+			productName = HackManPackageTests;
+		};
+		"HackMan::hackman::ProductTarget" /* hackman */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_218 /* Build configuration list for PBXAggregateTarget "hackman" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_221 /* PBXTargetDependency */,
+			);
+			name = hackman;
+			productName = hackman;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		401C3712230FC31200B23F7A /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C3711230FC31200B23F7A /* Bash.swift */; };
+		OBJ_102 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
+		OBJ_104 /* HackManLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HackMan::HackManLib::Product" /* HackManLib.framework */; };
+		OBJ_105 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Stencil::Stencil::Product" /* Stencil.framework */; };
+		OBJ_106 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PathKit::PathKit::Product" /* PathKit.framework */; };
+		OBJ_117 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Generator.swift */; };
+		OBJ_118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AppDelegate.swift */; };
+		OBJ_119 /* AssetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* AssetCatalog.swift */; };
+		OBJ_120 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* CollectionViewCell.swift */; };
+		OBJ_121 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Coordinator.swift */; };
+		OBJ_122 /* CoordinatorChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* CoordinatorChild.swift */; };
+		OBJ_123 /* CoordinatorMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* CoordinatorMain.swift */; };
+		OBJ_124 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* LaunchScreen.swift */; };
+		OBJ_125 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Localization.swift */; };
+		OBJ_126 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Model.swift */; };
+		OBJ_127 /* NewProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* NewProject.swift */; };
+		OBJ_128 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* ReusableView.swift */; };
+		OBJ_129 /* Scaffold.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Scaffold.swift */; };
+		OBJ_130 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* TableViewCell.swift */; };
+		OBJ_131 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* ViewController.swift */; };
+		OBJ_132 /* ViewControllerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* ViewControllerCollection.swift */; };
+		OBJ_133 /* ViewControllerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* ViewControllerDetail.swift */; };
+		OBJ_134 /* ViewControllerInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* ViewControllerInformation.swift */; };
+		OBJ_135 /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* ViewControllerTable.swift */; };
+		OBJ_136 /* ViewControllerWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* ViewControllerWeb.swift */; };
+		OBJ_137 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* Property.swift */; };
+		OBJ_138 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* Run.swift */; };
+		OBJ_139 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* String.swift */; };
+		OBJ_140 /* TerminalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* TerminalColor.swift */; };
+		OBJ_141 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* Writer.swift */; };
+		OBJ_143 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Stencil::Stencil::Product" /* Stencil.framework */; };
+		OBJ_144 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PathKit::PathKit::Product" /* PathKit.framework */; };
+		OBJ_152 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_163 /* HackManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* HackManTests.swift */; };
+		OBJ_164 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* XCTestManifests.swift */; };
+		OBJ_166 /* HackManLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HackMan::HackManLib::Product" /* HackManLib.framework */; };
+		OBJ_167 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Stencil::Stencil::Product" /* Stencil.framework */; };
+		OBJ_168 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PathKit::PathKit::Product" /* PathKit.framework */; };
+		OBJ_176 /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* PathKit.swift */; };
+		OBJ_183 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* Package.swift */; };
+		OBJ_188 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* Context.swift */; };
+		OBJ_189 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Environment.swift */; };
+		OBJ_190 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* Errors.swift */; };
+		OBJ_191 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Expression.swift */; };
+		OBJ_192 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* Extension.swift */; };
+		OBJ_193 /* FilterTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* FilterTag.swift */; };
+		OBJ_194 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* Filters.swift */; };
+		OBJ_195 /* ForTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* ForTag.swift */; };
+		OBJ_196 /* IfTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* IfTag.swift */; };
+		OBJ_197 /* Include.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* Include.swift */; };
+		OBJ_198 /* Inheritence.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* Inheritence.swift */; };
+		OBJ_199 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* KeyPath.swift */; };
+		OBJ_200 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* Lexer.swift */; };
+		OBJ_201 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* Loader.swift */; };
+		OBJ_202 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* Node.swift */; };
+		OBJ_203 /* NowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* NowTag.swift */; };
+		OBJ_204 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* Parser.swift */; };
+		OBJ_205 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* Template.swift */; };
+		OBJ_206 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* Tokenizer.swift */; };
+		OBJ_207 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* Variable.swift */; };
+		OBJ_209 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PathKit::PathKit::Product" /* PathKit.framework */; };
+		OBJ_216 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* Package.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		401C3706230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HackMan::HackManLib";
+			remoteInfo = HackManLib;
+		};
+		401C3707230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Stencil::Stencil";
+			remoteInfo = Stencil;
+		};
+		401C3708230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "PathKit::PathKit";
+			remoteInfo = PathKit;
+		};
+		401C3709230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "PathKit::PathKit";
+			remoteInfo = PathKit;
+		};
+		401C370A230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Stencil::Stencil";
+			remoteInfo = Stencil;
+		};
+		401C370B230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "PathKit::PathKit";
+			remoteInfo = PathKit;
+		};
+		401C370C230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HackMan::HackManLib";
+			remoteInfo = HackManLib;
+		};
+		401C370D230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Stencil::Stencil";
+			remoteInfo = Stencil;
+		};
+		401C370E230F769700B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "PathKit::PathKit";
+			remoteInfo = PathKit;
+		};
+		401C370F230F769B00B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HackMan::HackManTests";
+			remoteInfo = HackManTests;
+		};
+		401C3710230F769B00B23F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HackMan::HackMan";
+			remoteInfo = HackMan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		401C3711230FC31200B23F7A /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
+		"HackMan::HackMan::Product" /* HackMan */ = {isa = PBXFileReference; lastKnownFileType = text; path = HackMan; sourceTree = BUILT_PRODUCTS_DIR; };
+		"HackMan::HackManLib::Product" /* HackManLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HackManLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"HackMan::HackManTests::Product" /* HackManTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = HackManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_11 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		OBJ_14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		OBJ_16 /* AssetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCatalog.swift; sourceTree = "<group>"; };
+		OBJ_18 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		OBJ_20 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		OBJ_22 /* CoordinatorChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChild.swift; sourceTree = "<group>"; };
+		OBJ_24 /* CoordinatorMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMain.swift; sourceTree = "<group>"; };
+		OBJ_26 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		OBJ_30 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		OBJ_32 /* NewProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProject.swift; sourceTree = "<group>"; };
+		OBJ_34 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		OBJ_36 /* Scaffold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scaffold.swift; sourceTree = "<group>"; };
+		OBJ_38 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		OBJ_40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		OBJ_42 /* ViewControllerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCollection.swift; sourceTree = "<group>"; };
+		OBJ_44 /* ViewControllerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDetail.swift; sourceTree = "<group>"; };
+		OBJ_46 /* ViewControllerInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInformation.swift; sourceTree = "<group>"; };
+		OBJ_48 /* ViewControllerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTable.swift; sourceTree = "<group>"; };
+		OBJ_50 /* ViewControllerWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWeb.swift; sourceTree = "<group>"; };
+		OBJ_51 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		OBJ_52 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
+		OBJ_53 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		OBJ_54 /* TerminalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalColor.swift; sourceTree = "<group>"; };
+		OBJ_55 /* Writer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
+		OBJ_58 /* HackManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackManTests.swift; sourceTree = "<group>"; };
+		OBJ_59 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_62 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/alexchase/Develop/HackMan/.build/checkouts/Stencil/Package.swift; sourceTree = "<group>"; };
+		OBJ_63 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		OBJ_64 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		OBJ_65 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		OBJ_66 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		OBJ_67 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		OBJ_68 /* FilterTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTag.swift; sourceTree = "<group>"; };
+		OBJ_69 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		OBJ_70 /* ForTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForTag.swift; sourceTree = "<group>"; };
+		OBJ_71 /* IfTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfTag.swift; sourceTree = "<group>"; };
+		OBJ_72 /* Include.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Include.swift; sourceTree = "<group>"; };
+		OBJ_73 /* Inheritence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inheritence.swift; sourceTree = "<group>"; };
+		OBJ_74 /* KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
+		OBJ_75 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		OBJ_76 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		OBJ_77 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		OBJ_78 /* NowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowTag.swift; sourceTree = "<group>"; };
+		OBJ_79 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		OBJ_80 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		OBJ_81 /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		OBJ_82 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		OBJ_84 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/alexchase/Develop/HackMan/.build/checkouts/PathKit/Package.swift; sourceTree = "<group>"; };
+		OBJ_85 /* PathKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathKit.swift; sourceTree = "<group>"; };
+		OBJ_9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_92 /* HackMan-Preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "HackMan-Preview.gif"; sourceTree = "<group>"; };
+		OBJ_93 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		OBJ_94 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_95 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_96 /* HackMan-Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HackMan-Banner.png"; sourceTree = "<group>"; };
+		"PathKit::PathKit::Product" /* PathKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PathKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Stencil::Stencil::Product" /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stencil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_103 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_104 /* HackManLib.framework in Frameworks */,
+				OBJ_105 /* Stencil.framework in Frameworks */,
+				OBJ_106 /* PathKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_143 /* Stencil.framework in Frameworks */,
+				OBJ_144 /* PathKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_166 /* HackManLib.framework in Frameworks */,
+				OBJ_167 /* Stencil.framework in Frameworks */,
+				OBJ_168 /* PathKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_208 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_209 /* PathKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_10 /* HackManLib */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* Generator.swift */,
+				OBJ_12 /* Generators */,
+				OBJ_51 /* Property.swift */,
+				OBJ_52 /* Run.swift */,
+				OBJ_53 /* String.swift */,
+				OBJ_54 /* TerminalColor.swift */,
+				OBJ_55 /* Writer.swift */,
+				401C3711230FC31200B23F7A /* Bash.swift */,
+			);
+			name = HackManLib;
+			path = Sources/HackManLib;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_12 /* Generators */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* AppDelegate */,
+				OBJ_15 /* AssetCatalog */,
+				OBJ_17 /* CollectionViewCell */,
+				OBJ_19 /* Coordinator */,
+				OBJ_21 /* CoordinatorChild */,
+				OBJ_23 /* CoordinatorMain */,
+				OBJ_25 /* LaunchScreen */,
+				OBJ_27 /* Localization */,
+				OBJ_29 /* Model */,
+				OBJ_31 /* NewProject */,
+				OBJ_33 /* ReusableView */,
+				OBJ_35 /* Scaffold */,
+				OBJ_37 /* TableViewCell */,
+				OBJ_39 /* ViewController */,
+				OBJ_41 /* ViewControllerCollection */,
+				OBJ_43 /* ViewControllerDetail */,
+				OBJ_45 /* ViewControllerInformation */,
+				OBJ_47 /* ViewControllerTable */,
+				OBJ_49 /* ViewControllerWeb */,
+			);
+			path = Generators;
+			sourceTree = "<group>";
+		};
+		OBJ_13 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		OBJ_15 /* AssetCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_16 /* AssetCatalog.swift */,
+			);
+			path = AssetCatalog;
+			sourceTree = "<group>";
+		};
+		OBJ_17 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_18 /* CollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		OBJ_19 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_20 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		OBJ_21 /* CoordinatorChild */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_22 /* CoordinatorChild.swift */,
+			);
+			path = CoordinatorChild;
+			sourceTree = "<group>";
+		};
+		OBJ_23 /* CoordinatorMain */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* CoordinatorMain.swift */,
+			);
+			path = CoordinatorMain;
+			sourceTree = "<group>";
+		};
+		OBJ_25 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_26 /* LaunchScreen.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		OBJ_27 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_28 /* Localization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		OBJ_29 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_30 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		OBJ_31 /* NewProject */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* NewProject.swift */,
+			);
+			path = NewProject;
+			sourceTree = "<group>";
+		};
+		OBJ_33 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_34 /* ReusableView.swift */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		OBJ_35 /* Scaffold */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_36 /* Scaffold.swift */,
+			);
+			path = Scaffold;
+			sourceTree = "<group>";
+		};
+		OBJ_37 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_38 /* TableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		OBJ_39 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_40 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		OBJ_41 /* ViewControllerCollection */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_42 /* ViewControllerCollection.swift */,
+			);
+			path = ViewControllerCollection;
+			sourceTree = "<group>";
+		};
+		OBJ_43 /* ViewControllerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_44 /* ViewControllerDetail.swift */,
+			);
+			path = ViewControllerDetail;
+			sourceTree = "<group>";
+		};
+		OBJ_45 /* ViewControllerInformation */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_46 /* ViewControllerInformation.swift */,
+			);
+			path = ViewControllerInformation;
+			sourceTree = "<group>";
+		};
+		OBJ_47 /* ViewControllerTable */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_48 /* ViewControllerTable.swift */,
+			);
+			path = ViewControllerTable;
+			sourceTree = "<group>";
+		};
+		OBJ_49 /* ViewControllerWeb */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_50 /* ViewControllerWeb.swift */,
+			);
+			path = ViewControllerWeb;
+			sourceTree = "<group>";
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_56 /* Tests */,
+				OBJ_60 /* Dependencies */,
+				OBJ_86 /* Products */,
+				OBJ_92 /* HackMan-Preview.gif */,
+				OBJ_93 /* CODE_OF_CONDUCT.md */,
+				OBJ_94 /* LICENSE */,
+				OBJ_95 /* README.md */,
+				OBJ_96 /* HackMan-Banner.png */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_56 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_57 /* HackManTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_57 /* HackManTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_58 /* HackManTests.swift */,
+				OBJ_59 /* XCTestManifests.swift */,
+			);
+			name = HackManTests;
+			path = Tests/HackManTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_60 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_61 /* Stencil 0.13.1 */,
+				OBJ_83 /* PathKit 0.9.2 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_61 /* Stencil 0.13.1 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_62 /* Package.swift */,
+				OBJ_63 /* Context.swift */,
+				OBJ_64 /* Environment.swift */,
+				OBJ_65 /* Errors.swift */,
+				OBJ_66 /* Expression.swift */,
+				OBJ_67 /* Extension.swift */,
+				OBJ_68 /* FilterTag.swift */,
+				OBJ_69 /* Filters.swift */,
+				OBJ_70 /* ForTag.swift */,
+				OBJ_71 /* IfTag.swift */,
+				OBJ_72 /* Include.swift */,
+				OBJ_73 /* Inheritence.swift */,
+				OBJ_74 /* KeyPath.swift */,
+				OBJ_75 /* Lexer.swift */,
+				OBJ_76 /* Loader.swift */,
+				OBJ_77 /* Node.swift */,
+				OBJ_78 /* NowTag.swift */,
+				OBJ_79 /* Parser.swift */,
+				OBJ_80 /* Template.swift */,
+				OBJ_81 /* Tokenizer.swift */,
+				OBJ_82 /* Variable.swift */,
+			);
+			name = "Stencil 0.13.1";
+			path = .build/checkouts/Stencil/Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* HackMan */,
+				OBJ_10 /* HackManLib */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* HackMan */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* main.swift */,
+			);
+			name = HackMan;
+			path = Sources/HackMan;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_83 /* PathKit 0.9.2 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_84 /* Package.swift */,
+				OBJ_85 /* PathKit.swift */,
+			);
+			name = "PathKit 0.9.2";
+			path = .build/checkouts/PathKit/Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"HackMan::HackManLib::Product" /* HackManLib.framework */,
+				"HackMan::HackManTests::Product" /* HackManTests.xctest */,
+				"Stencil::Stencil::Product" /* Stencil.framework */,
+				"HackMan::HackMan::Product" /* HackMan */,
+				"PathKit::PathKit::Product" /* PathKit.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"HackMan::HackMan" /* HackMan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_98 /* Build configuration list for PBXNativeTarget "HackMan" */;
+			buildPhases = (
+				OBJ_101 /* Sources */,
+				OBJ_103 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_107 /* PBXTargetDependency */,
+				OBJ_109 /* PBXTargetDependency */,
+				OBJ_111 /* PBXTargetDependency */,
+			);
+			name = HackMan;
+			productName = HackMan;
+			productReference = "HackMan::HackMan::Product" /* HackMan */;
+			productType = "com.apple.product-type.tool";
+		};
+		"HackMan::HackManLib" /* HackManLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_113 /* Build configuration list for PBXNativeTarget "HackManLib" */;
+			buildPhases = (
+				OBJ_116 /* Sources */,
+				OBJ_142 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_145 /* PBXTargetDependency */,
+				OBJ_146 /* PBXTargetDependency */,
+			);
+			name = HackManLib;
+			productName = HackManLib;
+			productReference = "HackMan::HackManLib::Product" /* HackManLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"HackMan::HackManTests" /* HackManTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_159 /* Build configuration list for PBXNativeTarget "HackManTests" */;
+			buildPhases = (
+				OBJ_162 /* Sources */,
+				OBJ_165 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_169 /* PBXTargetDependency */,
+				OBJ_170 /* PBXTargetDependency */,
+				OBJ_171 /* PBXTargetDependency */,
+			);
+			name = HackManTests;
+			productName = HackManTests;
+			productReference = "HackMan::HackManTests::Product" /* HackManTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"HackMan::SwiftPMPackageDescription" /* HackManPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_148 /* Build configuration list for PBXNativeTarget "HackManPackageDescription" */;
+			buildPhases = (
+				OBJ_151 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackManPackageDescription;
+			productName = HackManPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"PathKit::PathKit" /* PathKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_172 /* Build configuration list for PBXNativeTarget "PathKit" */;
+			buildPhases = (
+				OBJ_175 /* Sources */,
+				OBJ_177 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PathKit;
+			productName = PathKit;
+			productReference = "PathKit::PathKit::Product" /* PathKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"PathKit::SwiftPMPackageDescription" /* PathKitPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_179 /* Build configuration list for PBXNativeTarget "PathKitPackageDescription" */;
+			buildPhases = (
+				OBJ_182 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PathKitPackageDescription;
+			productName = PathKitPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"Stencil::Stencil" /* Stencil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_184 /* Build configuration list for PBXNativeTarget "Stencil" */;
+			buildPhases = (
+				OBJ_187 /* Sources */,
+				OBJ_208 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_210 /* PBXTargetDependency */,
+			);
+			name = Stencil;
+			productName = Stencil;
+			productReference = "Stencil::Stencil::Product" /* Stencil.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Stencil::SwiftPMPackageDescription" /* StencilPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_212 /* Build configuration list for PBXNativeTarget "StencilPackageDescription" */;
+			buildPhases = (
+				OBJ_215 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StencilPackageDescription;
+			productName = StencilPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "HackMan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"HackMan::HackMan" /* HackMan */,
+				"HackMan::HackManLib" /* HackManLib */,
+				"HackMan::SwiftPMPackageDescription" /* HackManPackageDescription */,
+				"HackMan::HackManPackageTests::ProductTarget" /* HackManPackageTests */,
+				"HackMan::HackManTests" /* HackManTests */,
+				"PathKit::PathKit" /* PathKit */,
+				"PathKit::SwiftPMPackageDescription" /* PathKitPackageDescription */,
+				"Stencil::Stencil" /* Stencil */,
+				"Stencil::SwiftPMPackageDescription" /* StencilPackageDescription */,
+				"HackMan::hackman::ProductTarget" /* hackman */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_102 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_117 /* Generator.swift in Sources */,
+				OBJ_118 /* AppDelegate.swift in Sources */,
+				OBJ_119 /* AssetCatalog.swift in Sources */,
+				OBJ_120 /* CollectionViewCell.swift in Sources */,
+				OBJ_121 /* Coordinator.swift in Sources */,
+				OBJ_122 /* CoordinatorChild.swift in Sources */,
+				OBJ_123 /* CoordinatorMain.swift in Sources */,
+				OBJ_124 /* LaunchScreen.swift in Sources */,
+				OBJ_125 /* Localization.swift in Sources */,
+				OBJ_126 /* Model.swift in Sources */,
+				OBJ_127 /* NewProject.swift in Sources */,
+				OBJ_128 /* ReusableView.swift in Sources */,
+				OBJ_129 /* Scaffold.swift in Sources */,
+				OBJ_130 /* TableViewCell.swift in Sources */,
+				OBJ_131 /* ViewController.swift in Sources */,
+				OBJ_132 /* ViewControllerCollection.swift in Sources */,
+				OBJ_133 /* ViewControllerDetail.swift in Sources */,
+				401C3712230FC31200B23F7A /* Bash.swift in Sources */,
+				OBJ_134 /* ViewControllerInformation.swift in Sources */,
+				OBJ_135 /* ViewControllerTable.swift in Sources */,
+				OBJ_136 /* ViewControllerWeb.swift in Sources */,
+				OBJ_137 /* Property.swift in Sources */,
+				OBJ_138 /* Run.swift in Sources */,
+				OBJ_139 /* String.swift in Sources */,
+				OBJ_140 /* TerminalColor.swift in Sources */,
+				OBJ_141 /* Writer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_151 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_152 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_162 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_163 /* HackManTests.swift in Sources */,
+				OBJ_164 /* XCTestManifests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_175 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_176 /* PathKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_182 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_183 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_187 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_188 /* Context.swift in Sources */,
+				OBJ_189 /* Environment.swift in Sources */,
+				OBJ_190 /* Errors.swift in Sources */,
+				OBJ_191 /* Expression.swift in Sources */,
+				OBJ_192 /* Extension.swift in Sources */,
+				OBJ_193 /* FilterTag.swift in Sources */,
+				OBJ_194 /* Filters.swift in Sources */,
+				OBJ_195 /* ForTag.swift in Sources */,
+				OBJ_196 /* IfTag.swift in Sources */,
+				OBJ_197 /* Include.swift in Sources */,
+				OBJ_198 /* Inheritence.swift in Sources */,
+				OBJ_199 /* KeyPath.swift in Sources */,
+				OBJ_200 /* Lexer.swift in Sources */,
+				OBJ_201 /* Loader.swift in Sources */,
+				OBJ_202 /* Node.swift in Sources */,
+				OBJ_203 /* NowTag.swift in Sources */,
+				OBJ_204 /* Parser.swift in Sources */,
+				OBJ_205 /* Template.swift in Sources */,
+				OBJ_206 /* Tokenizer.swift in Sources */,
+				OBJ_207 /* Variable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_216 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_107 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HackMan::HackManLib" /* HackManLib */;
+			targetProxy = 401C3706230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_109 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Stencil::Stencil" /* Stencil */;
+			targetProxy = 401C370A230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "PathKit::PathKit" /* PathKit */;
+			targetProxy = 401C370B230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Stencil::Stencil" /* Stencil */;
+			targetProxy = 401C3707230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_146 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "PathKit::PathKit" /* PathKit */;
+			targetProxy = 401C3709230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_157 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HackMan::HackManTests" /* HackManTests */;
+			targetProxy = 401C370F230F769B00B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_169 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HackMan::HackManLib" /* HackManLib */;
+			targetProxy = 401C370C230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Stencil::Stencil" /* Stencil */;
+			targetProxy = 401C370D230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_171 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "PathKit::PathKit" /* PathKit */;
+			targetProxy = 401C370E230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_210 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "PathKit::PathKit" /* PathKit */;
+			targetProxy = 401C3708230F769700B23F7A /* PBXContainerItemProxy */;
+		};
+		OBJ_221 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HackMan::HackMan" /* HackMan */;
+			targetProxy = 401C3710230F769B00B23F7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackMan_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackMan;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_114 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackManLib_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HackManLib;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackManLib;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_115 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackManLib_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HackManLib;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackManLib;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_155 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_156 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_160 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackManTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackManTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_161 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackManTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackManTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_173 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/PathKit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = PathKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = PathKit;
+			};
+			name = Debug;
+		};
+		OBJ_174 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/PathKit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = PathKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = PathKit;
+			};
+			name = Release;
+		};
+		OBJ_180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		OBJ_181 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		OBJ_185 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/Stencil_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Stencil;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = Stencil;
+			};
+			name = Debug;
+		};
+		OBJ_186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/Stencil_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Stencil;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = Stencil;
+			};
+			name = Release;
+		};
+		OBJ_213 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		OBJ_214 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		OBJ_219 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HackMan.xcodeproj/HackMan_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = HackMan;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_113 /* Build configuration list for PBXNativeTarget "HackManLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_114 /* Debug */,
+				OBJ_115 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_148 /* Build configuration list for PBXNativeTarget "HackManPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_149 /* Debug */,
+				OBJ_150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_154 /* Build configuration list for PBXAggregateTarget "HackManPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_155 /* Debug */,
+				OBJ_156 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_159 /* Build configuration list for PBXNativeTarget "HackManTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_160 /* Debug */,
+				OBJ_161 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_172 /* Build configuration list for PBXNativeTarget "PathKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_173 /* Debug */,
+				OBJ_174 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_179 /* Build configuration list for PBXNativeTarget "PathKitPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_180 /* Debug */,
+				OBJ_181 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_184 /* Build configuration list for PBXNativeTarget "Stencil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_185 /* Debug */,
+				OBJ_186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "HackMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_212 /* Build configuration list for PBXNativeTarget "StencilPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_213 /* Debug */,
+				OBJ_214 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_218 /* Build configuration list for PBXAggregateTarget "hackman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_219 /* Debug */,
+				OBJ_220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_98 /* Build configuration list for PBXNativeTarget "HackMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_99 /* Debug */,
+				OBJ_100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

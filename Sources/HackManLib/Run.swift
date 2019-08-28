@@ -47,7 +47,6 @@ public struct CommandLineRunner {
         switch command {
         case .new:
             NewProject().generate(arguments: arguments, options: options)
-            Writer.finish()
         case .generate:
             guard !arguments.isEmpty else { throw GeneratorCommandError.noGenerator }
             let generatorName = arguments.removeFirst().camelCasedIfNeeded(.upper)
@@ -56,6 +55,9 @@ public struct CommandLineRunner {
             }
             generator.init().generate(arguments: arguments, options: options)
             Writer.finish()
+            
+            Bash.exec(commands: "xcodegen")
+            
         case .help:
             print("Find help on: https://github.com/Cosmo/HackMan")
         case .unknown(let name):

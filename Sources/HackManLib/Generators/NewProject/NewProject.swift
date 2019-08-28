@@ -48,9 +48,23 @@ class NewProject: NSObject, Generator {
         
         let rendered2 = try! environment.renderTemplate(name: "gitignore", context: context)
         Writer.createFile("\(projectName)/.gitignore", contents: rendered2, options: options)
+        Writer.finish()
         
-        print()
-        print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
+        if arguments.last == "setup" {
+            Writer.createPath("\(projectName)/Source")
+            let setupCommands:[String] = [
+                "cd \(projectName)",
+                "hackman g app_delegate",
+                "hackman g asset_catalog",
+                "hackman g launch_screen",
+                "xcodegen"
+            ]
+            print(Bash.exec(commands: setupCommands))
+        }
+        else {
+            print()
+            print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
+        }
     }
     
     func printUsage() {
