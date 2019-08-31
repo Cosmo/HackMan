@@ -1,5 +1,6 @@
 import Foundation
 import Stencil
+import GrammaticalNumber
 
 @objc(ViewController)
 class ViewController: NSObject, Generator {
@@ -26,7 +27,7 @@ class ViewController: NSObject, Generator {
         let ext = Extension()
         ext.registerFilter("pluralized") { (value: Any?) in
             if let value = value as? String {
-                return value.pluralized
+                return value.pluralized()
             }
             return value
         }
