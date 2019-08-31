@@ -45,7 +45,7 @@ class CoordinatorChild: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized())Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized().camelCasedIfNeeded(.upper))Coordinator.swift", contents: rendered, options: options)
     }
     
     func printUsage() {
