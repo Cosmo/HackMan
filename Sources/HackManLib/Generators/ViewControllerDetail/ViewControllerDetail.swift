@@ -49,7 +49,7 @@ class ViewControllerDetail: NSObject, Generator {
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewControllerDetail.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized())/\(resourceName)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName)ViewController.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

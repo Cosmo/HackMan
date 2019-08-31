@@ -2,7 +2,7 @@ import UIKit
 
 class {{ resourceName }}ViewController: UIViewController {
     {% if coordinator %}
-    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    weak var coordinator: {{ resourceName | pluralized | upperCamelCased }}Coordinator?
     {% endif %}
     var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
     
@@ -45,7 +45,7 @@ class {{ resourceName }}ViewController: UIViewController {
     }
     
     func commonInit() {
-        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized }} Title (Singular)")
+        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized | upperCamelCased }} Title (Singular)")
     }
     
     override func viewDidLoad() {

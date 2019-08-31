@@ -12,7 +12,7 @@ class CoordinatorMain: NSObject, Generator {
         let resourceNames = arguments
         let resources = resourceNames
             .map { $0.camelCasedIfNeeded(.upper) }
-            .map { ["name": $0, "pluralName": String($0).pluralized(), "className": String($0) + "ViewController" ] }
+            .map { ["name": $0, "pluralName": String($0).pluralized().camelCasedIfNeeded(.upper), "className": String($0) + "ViewController" ] }
         
         var children = resources
             .map { "\($0["pluralName"] ?? "")Coordinator(navigationController: UINavigationController())" }

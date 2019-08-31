@@ -1,12 +1,12 @@
 //
-//  {{ resourceName | pluralized }}ViewController.swift
+//  {{ resourceName | pluralized | upperCamelCased }}ViewController.swift
 //
 
 import UIKit
 
-class {{ resourceName | pluralized }}ViewController: UIViewController {
+class {{ resourceName | pluralized | upperCamelCased }}ViewController: UIViewController {
     {% if coordinator %}
-    weak var coordinator: {{ resourceName | pluralized }}Coordinator?
+    weak var coordinator: {{ resourceName | pluralized | upperCamelCased }}Coordinator?
     {% endif %}
     
     lazy var tableView: UITableView = {
@@ -23,9 +23,9 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        let refreshTitle = NSLocalizedString("Refreshing {{ resourceName | pluralized }} …", comment: "{{ resourceName | pluralized }} Refresh Text")
+        let refreshTitle = NSLocalizedString("Refreshing {{ resourceName | pluralized | upperCamelCased }} …", comment: "{{ resourceName | pluralized | upperCamelCased }} Refresh Text")
         refreshControl.attributedTitle = NSAttributedString(string: refreshTitle)
-        refreshControl.addTarget(self, action: #selector(refresh{{ resourceName | pluralized }}(sender:)), for: UIControl.Event.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh{{ resourceName | pluralized | upperCamelCased }}(sender:)), for: UIControl.Event.valueChanged)
         return refreshControl
     }()
     
@@ -44,7 +44,7 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
     }
     
     func commonInit() {
-        title = NSLocalizedString("{{ resourceName | pluralized }}", comment: "{{ resourceName | pluralized }} Title (Plural)")
+        title = NSLocalizedString("{{ resourceName | pluralized | upperCamelCased }}", comment: "{{ resourceName | pluralized | upperCamelCased }} Title (Plural)")
     }
     
     override func viewDidLoad() {
@@ -83,21 +83,21 @@ class {{ resourceName | pluralized }}ViewController: UIViewController {
     }
 }
 
-extension {{ resourceName | pluralized }}ViewController {
+extension {{ resourceName | pluralized | upperCamelCased }}ViewController {
     var {{ resourceName | pluralized | lowerCamelCased }}: [{{ resourceName }}] {
         return {{ resourceName }}.mock()
     }
 }
 
-extension {{ resourceName | pluralized }}ViewController {
-    @objc func refresh{{ resourceName | pluralized }}(sender: UIRefreshControl) {
+extension {{ resourceName | pluralized | upperCamelCased }}ViewController {
+    @objc func refresh{{ resourceName | pluralized | upperCamelCased }}(sender: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             sender.endRefreshing()
         })
     }
 }
 
-extension {{ resourceName | pluralized }}ViewController: UITableViewDataSource {
+extension {{ resourceName | pluralized | upperCamelCased }}ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Asks your data source object for the number of items in the specified section.
         return {{ resourceName | pluralized | lowerCamelCased }}.count
@@ -113,7 +113,7 @@ extension {{ resourceName | pluralized }}ViewController: UITableViewDataSource {
     }
 }
 
-extension {{ resourceName | pluralized }}ViewController: UITableViewDelegate {
+extension {{ resourceName | pluralized | upperCamelCased }}ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Tells the delegate that the item at the specified index path was selected.
         print("Selected item \(indexPath.item) in section \(indexPath.section)")
