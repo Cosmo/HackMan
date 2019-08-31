@@ -28,7 +28,7 @@ class ViewControllerTable: NSObject, Generator {
         let ext = Extension()
         ext.registerFilter("pluralized") { (value: Any?) in
             if let value = value as? String {
-                return value.pluralized
+                return value.pluralized()
             }
             return value
         }
@@ -49,10 +49,10 @@ class ViewControllerTable: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerTable.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized)/\(resourceName.pluralized)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized())/\(resourceName.pluralized())ViewController.swift", contents: rendered, options: options)
         
         let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized)/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized())/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
     }
     
     func printUsage() {

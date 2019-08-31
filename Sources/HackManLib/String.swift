@@ -39,10 +39,6 @@ extension StringLiteralType {
         }
     }
     
-    var pluralized: String {
-        return self + "s"
-    }
-    
     func colored(_ color: TerminalColor) -> String {
         return "\(color.rawValue)\(self)\(TerminalColor.default.rawValue)"
     }

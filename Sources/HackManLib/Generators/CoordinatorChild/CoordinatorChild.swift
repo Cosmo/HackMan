@@ -1,5 +1,6 @@
 import Foundation
 import Stencil
+import GrammaticalNumber
 
 @objc(CoordinatorChild)
 class CoordinatorChild: NSObject, Generator {
@@ -23,7 +24,7 @@ class CoordinatorChild: NSObject, Generator {
         let ext = Extension()
         ext.registerFilter("pluralized") { (value: Any?) in
             if let value = value as? String {
-                return value.pluralized
+                return value.pluralized()
             }
             return value
         }
@@ -44,7 +45,7 @@ class CoordinatorChild: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized)Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized())Coordinator.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

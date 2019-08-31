@@ -1,5 +1,6 @@
 import Foundation
 import Stencil
+import GrammaticalNumber
 
 @objc(CoordinatorMain)
 class CoordinatorMain: NSObject, Generator {
@@ -11,7 +12,7 @@ class CoordinatorMain: NSObject, Generator {
         let resourceNames = arguments
         let resources = resourceNames
             .map { $0.camelCasedIfNeeded(.upper) }
-            .map { ["name": $0, "pluralName": String($0).pluralized, "className": String($0) + "ViewController" ] }
+            .map { ["name": $0, "pluralName": String($0).pluralized(), "className": String($0) + "ViewController" ] }
         
         var children = resources
             .map { "\($0["pluralName"] ?? "")Coordinator(navigationController: UINavigationController())" }
@@ -32,7 +33,7 @@ class CoordinatorMain: NSObject, Generator {
         let ext = Extension()
         ext.registerFilter("pluralized") { (value: Any?) in
             if let value = value as? String {
-                return value.pluralized
+                return value.pluralized()
             }
             return value
         }
