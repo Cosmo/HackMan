@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StringCase
 
 struct Property: Equatable {
     public let name: String

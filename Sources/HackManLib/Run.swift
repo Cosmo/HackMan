@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StringCase
 
 public struct CommandLineRunner {
     public enum Command {

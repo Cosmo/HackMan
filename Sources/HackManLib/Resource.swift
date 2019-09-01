@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StringCase
 
 struct Resource {
     var name: String

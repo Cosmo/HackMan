@@ -1,6 +1,7 @@
 import Foundation
 import Stencil
 import GrammaticalNumber
+import StringCase
 
 @objc(NewProject)
 class NewProject: NSObject, Generator {
