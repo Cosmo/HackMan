@@ -28,11 +28,7 @@ extension StringLiteralType {
     }
     
     func camelCasedIfNeeded(_ firstLetterCase: LetterCase) -> String {
-        guard let firstLetter = self.first else {
-            fatalError("String empty!")
-        }
-        
-        if self.contains("_") || firstLetter.isUppercase && firstLetterCase != .upper || firstLetter.isLowercase && firstLetterCase != .lower {
+        if let firstLetter = self.first, self.contains("_") || firstLetter.isUppercase && firstLetterCase != .upper || firstLetter.isLowercase && firstLetterCase != .lower {
             return self.camelCased(firstLetterCase)
         } else {
             return self
