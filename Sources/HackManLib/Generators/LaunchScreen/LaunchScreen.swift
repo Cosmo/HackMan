@@ -5,8 +5,6 @@ class LaunchScreen: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         let url = URL(fileURLWithPath: "\(path)/LaunchScreen.storyboard")
         let contents = try! String(contentsOf: url, encoding: String.Encoding.utf8)
         

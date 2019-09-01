@@ -6,8 +6,6 @@ class ViewControllerWeb: NSObject, Generator {
     required override init() {}
 
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         let loader = FileSystemLoader(paths: [path])
         let environment = Environment(loader: loader)
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")

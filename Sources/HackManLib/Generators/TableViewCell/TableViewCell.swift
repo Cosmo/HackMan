@@ -6,8 +6,6 @@ class TableViewCell: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         guard !arguments.isEmpty else {
             printUsage()
             exit(0)

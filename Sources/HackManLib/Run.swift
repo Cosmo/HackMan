@@ -54,7 +54,13 @@ public struct CommandLineRunner {
             guard let generator = NSClassFromString(generatorName) as? Generator.Type else {
                 throw GeneratorCommandError.unknownGenerator
             }
-            generator.init().generate(arguments: arguments, options: options)
+            
+            if options.contains("-h") || options.contains("--help") {
+                generator.init().help()
+            } else {
+                generator.init().generate(arguments: arguments, options: options)
+            }
+            
             Writer.finish()
         case .help:
             print("Find help on: https://github.com/Cosmo/HackMan")

@@ -7,8 +7,6 @@ class CoordinatorMain: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         let resourceNames = arguments
         let resources = resourceNames
             .map { $0.camelCasedIfNeeded(.upper) }

@@ -5,8 +5,6 @@ class AssetCatalog: NSObject, Generator {
     required override init() {}
 
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         let url = URL(fileURLWithPath: "\(path)/Assets.xcassets")
         let contentsUrl1 = url.appendingPathComponent("Contents.json")
         let contents = try! String(contentsOf: contentsUrl1, encoding: String.Encoding.utf8)

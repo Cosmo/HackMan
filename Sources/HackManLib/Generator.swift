@@ -21,11 +21,4 @@ extension Generator {
         let generatorsPath = bundlePath.joined(separator: "/")
         return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
     }
-    
-    func showHelpIfNeeded(options: [String]) {
-        if options.contains("-h") || options.contains("--help") {
-            help()
-            exit(0)
-        }
-    }
 }
