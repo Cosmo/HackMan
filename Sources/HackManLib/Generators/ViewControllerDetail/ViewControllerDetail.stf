@@ -14,7 +14,7 @@ class {{ resourceName }}ViewController: UIViewController {
     
     {% for property in properties %}
     
-    {% if property.isLinkable %}
+    {% if property.isCustomResource %}
     lazy var {{ property.name }}Button: UIButton = {
     let button = UIButton(type: UIButton.ButtonType.system)
         button.contentHorizontalAlignment = .left
@@ -56,7 +56,7 @@ class {{ resourceName }}ViewController: UIViewController {
     view.backgroundColor = UIColor.white
     
     {% for property in properties %}
-    {% if property.isLinkable %}
+    {% if property.isCustomResource %}
         {{ property.name }}Button.addTarget(self, action: #selector({{ property.name }}ButtonAction(sender:)), for: UIControl.Event.touchUpInside)
         {{ property.name }}Button.setTitle(String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }}), for: UIControl.State.normal)
         stackView.addArrangedSubview({{ property.name }}Button)
@@ -80,7 +80,7 @@ class {{ resourceName }}ViewController: UIViewController {
 }
     
 {% for property in properties %}
-{% if property.isLinkable %}
+{% if property.isCustomResource %}
 extension {{ resourceName }}ViewController {
     @objc func {{ property.name | lowerCamelCased }}ButtonAction(sender: UIButton) {
         {% if coordinator %}

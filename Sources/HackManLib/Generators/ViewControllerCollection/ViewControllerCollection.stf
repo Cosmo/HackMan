@@ -93,7 +93,7 @@ class {{ resourceName | pluralized | upperCamelCased }}ViewController: UIViewCon
 
 extension {{ resourceName | pluralized | upperCamelCased }}ViewController {
     var {{ resourceName | pluralized | lowerCamelCased }}: [{{ resourceName }}] {
-        return {{ resourceName }}.mock()
+        return {{ resourceName }}.sampleData()
     }
 }
 

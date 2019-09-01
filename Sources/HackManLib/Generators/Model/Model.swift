@@ -18,7 +18,7 @@ class Model: NSObject, Generator {
         let properties = Property.createList(inputStrings: arguments)
         
         let strings = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven"]
-        let mocks = strings.map { (string) in return "\(resourceName)(\( properties.map { return "\($0.name): \($0.mock(string: string))" }.joined(separator: ", ") ))" }
+        let mocks = strings.map { (string) in return "\(resourceName)(\( properties.map { return "\($0.name): \($0.stringForMockContent(placeholder: string))" }.joined(separator: ", ") ))" }
         
         let context: [String: Any] = [
             "resourceName": resourceName,
