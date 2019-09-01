@@ -2,10 +2,6 @@ import XCTest
 @testable import HackManLib
 
 final class HackManTests: XCTestCase {
-    func testExample() throws {
-        // XCTAssertEqual(Property(), "Hello, World!")
-    }
-    
     func testSnakeCasedInput() throws {
         let propertiesString = "name:string uuid weight:double is_enabled:bool artist:artist created_at:date updated_at:date".split(separator: " ").map { String($0) }
         let properties = Property.createList(inputStrings: propertiesString)
@@ -57,7 +53,6 @@ final class HackManTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample),
         ("testSnakeCasedInput", testSnakeCasedInput),
         ("testCamelCasedInput", testCamelCasedInput),
     ]
