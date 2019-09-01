@@ -14,8 +14,9 @@ final class HackManStringTests: XCTestCase {
     func testLowerCamelCase() throws {
         XCTAssertTrue("lower".isLowerCamelCase)
         XCTAssertTrue("lowerCamelCase".isLowerCamelCase)
-        XCTAssertFalse("lowerCamelCase_with_underscore".isSnakeCase)
-        XCTAssertFalse("upperCamelCase".isSnakeCase)
+        XCTAssertFalse("lowerCamelCase_with_underscore".isLowerCamelCase)
+        XCTAssertFalse("UpperCamelCase".isLowerCamelCase)
+        XCTAssertFalse("snake_case".isLowerCamelCase)
     }
     
     func testUpperCamelCase() throws {
@@ -23,6 +24,7 @@ final class HackManStringTests: XCTestCase {
         XCTAssertTrue("UpperCamelCase".isUpperCamelCase)
         XCTAssertTrue("UpperCamelCaseExample".isUpperCamelCase)
         XCTAssertFalse("UpperCamelCase_with_underscore".isUpperCamelCase)
+        XCTAssertFalse("snake_case".isUpperCamelCase)
         XCTAssertFalse("lowerCamelCase".isUpperCamelCase)
     }
 

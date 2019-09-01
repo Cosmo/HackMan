@@ -13,7 +13,7 @@ class CoordinatorChild: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+        let resourceName = arguments.removeFirst().upperCamelCased()
         
         let context: [String: Any] = [
             "resourceName": resourceName
@@ -28,13 +28,13 @@ class CoordinatorChild: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
+                return value.upperCamelCased()
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
+                return value.lowerCamelCased()
             }
             return value
         }
@@ -43,7 +43,7 @@ class CoordinatorChild: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized().camelCasedIfNeeded(.upper))Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized().upperCamelCased())Coordinator.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

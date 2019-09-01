@@ -29,13 +29,13 @@ class NewProject: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
+                return value.upperCamelCased()
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
+                return value.lowerCamelCased()
             }
             return value
         }

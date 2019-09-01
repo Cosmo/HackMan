@@ -31,30 +31,24 @@ extension StringLiteralType {
 }
 
 extension StringLiteralType {
-    enum LetterCase {
-        case upper
-        case lower
-    }
-
-    func camelCased(_ firstLetterCase: LetterCase) -> String {
-        var camelCasedString = ""
-        
-        for (index, word) in self.split(separator: "_").enumerated() {
-            if firstLetterCase == .lower && index == 0 {
-                camelCasedString.append(String(word).lowercased())
-            } else {
-                camelCasedString.append(String(word).capitalized)
-            }
-        }
-        
-        return camelCasedString
-    }
-    
-    func camelCasedIfNeeded(_ firstLetterCase: LetterCase) -> String {
-        if firstLetterCase == .upper && !isUpperCamelCase || firstLetterCase == .lower && !isLowerCamelCase {
-            return self.camelCased(firstLetterCase)
-        } else {
+    func lowerCamelCased() -> String {
+        if self.isLowerCamelCase {
             return self
         }
+        
+        return self.split(separator: "_").enumerated().map { (offset, element) -> String in
+            if offset == 0 {
+                return String(element).lowercased()
+            } else {
+                return String(element).capitalized
+            }
+        }.joined()
+    }
+    
+    func upperCamelCased() -> String {
+        if self.isUpperCamelCase {
+            return self
+        }
+        return self.split(separator: "_").map({ String($0).capitalized }).joined()
     }
 }

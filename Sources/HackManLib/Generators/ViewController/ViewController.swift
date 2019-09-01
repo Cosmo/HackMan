@@ -13,7 +13,7 @@ class ViewController: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+        let resourceName = arguments.removeFirst().upperCamelCased()
         
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         
@@ -31,13 +31,13 @@ class ViewController: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
+                return value.upperCamelCased()
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
+                return value.lowerCamelCased()
             }
             return value
         }

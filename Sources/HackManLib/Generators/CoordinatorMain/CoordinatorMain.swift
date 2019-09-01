@@ -9,15 +9,15 @@ class CoordinatorMain: NSObject, Generator {
     func generate(arguments: [String], options: [String]) {
         let resourceNames = arguments
         let resources = resourceNames
-            .map { $0.camelCasedIfNeeded(.upper) }
-            .map { ["name": $0, "pluralName": String($0).pluralized().camelCasedIfNeeded(.upper), "className": String($0) + "ViewController" ] }
+            .map { $0.upperCamelCased() }
+            .map { ["name": $0, "pluralName": String($0).pluralized().upperCamelCased(), "className": String($0) + "ViewController" ] }
         
         var children = resources
             .map { "\($0["pluralName"] ?? "")Coordinator(navigationController: UINavigationController())" }
         
         if let result = (options.filter { $0.contains("include") }).first?.split(separator: "=").last {
             for additionalControllerName in result.split(separator: ",") {
-                let additionalControllerName = String(additionalControllerName).camelCasedIfNeeded(.upper)
+                let additionalControllerName = String(additionalControllerName).upperCamelCased()
                 children.append("\(additionalControllerName)Coordinator(navigationController: UINavigationController())")
             }
         }
@@ -37,13 +37,13 @@ class CoordinatorMain: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
+                return value.upperCamelCased()
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
+                return value.lowerCamelCased()
             }
             return value
         }

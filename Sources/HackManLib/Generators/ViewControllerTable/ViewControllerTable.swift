@@ -12,7 +12,7 @@ class ViewControllerTable: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+        let resourceName = arguments.removeFirst().upperCamelCased()
         let properties = Property.createList(inputStrings: arguments)
         
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
@@ -32,13 +32,13 @@ class ViewControllerTable: NSObject, Generator {
         }
         ext.registerFilter("upperCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
+                return value.upperCamelCased()
             }
             return value
         }
         ext.registerFilter("lowerCamelCased") { (value: Any?) in
             if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
+                return value.lowerCamelCased()
             }
             return value
         }
@@ -47,10 +47,10 @@ class ViewControllerTable: NSObject, Generator {
         let environment = Environment(loader: loader, extensions: [ext])
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerTable.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName.pluralized().camelCasedIfNeeded(.upper))ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().upperCamelCased())/\(resourceName.pluralized().upperCamelCased())ViewController.swift", contents: rendered, options: options)
         
         let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().upperCamelCased())/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
     }
     
     func printUsage() {

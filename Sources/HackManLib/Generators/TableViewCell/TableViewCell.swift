@@ -12,7 +12,7 @@ class TableViewCell: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+        let resourceName = arguments.removeFirst().upperCamelCased()
         let properties = Property.createList(inputStrings: arguments)
         
         let context: [String: Any] = [

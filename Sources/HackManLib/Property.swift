@@ -26,7 +26,7 @@ struct Property: Equatable {
     
     init(name: String, valueType: String, isArray: Bool = false) {
         self.name = name
-        self.valueType = valueType.camelCasedIfNeeded(.upper)
+        self.valueType = valueType.upperCamelCased()
     }
     
     init?(input: String) {
@@ -35,8 +35,8 @@ struct Property: Equatable {
             return nil
         }
         let valueTypeSubsequence = (splitStrings.count == 1 ? "String" : splitStrings[1])
-        let valueType = String(valueTypeSubsequence).camelCasedIfNeeded(.upper)
-        self.name = name.camelCasedIfNeeded(.lower)
+        let valueType = String(valueTypeSubsequence).upperCamelCased()
+        self.name = name.lowerCamelCased()
         self.valueType = valueType
     }
     

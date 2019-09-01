@@ -50,7 +50,7 @@ public struct CommandLineRunner {
             Writer.finish()
         case .generate:
             guard !arguments.isEmpty else { throw GeneratorCommandError.noGenerator }
-            let generatorName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+            let generatorName = arguments.removeFirst().upperCamelCased()
             guard let generator = NSClassFromString(generatorName) as? Generator.Type else {
                 throw GeneratorCommandError.unknownGenerator
             }
