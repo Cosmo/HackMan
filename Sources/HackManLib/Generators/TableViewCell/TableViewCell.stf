@@ -1,17 +1,17 @@
 //
-//  {{ className }}.swift
+//  {{ resource.name }}TableViewCell.swift
 //
 
 import UIKit
 
-class {{ resourceName }}TableViewCell: UITableViewCell {
+class {{ resource.name }}TableViewCell: UITableViewCell {
     var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.vertical
         return stackView
     }()
     
-    {% for property in properties %}
+    {% for property in resource.properties %}
         lazy var {{ property.name }}Label: UILabel = {
             let label = UILabel()
             {% if forloop.counter == 0 %}
@@ -42,7 +42,7 @@ class {{ resourceName }}TableViewCell: UITableViewCell {
         
         contentView.backgroundColor = UIColor.white
             
-        {% for property in properties %}
+        {% for property in resource.properties %}
         stackView.addArrangedSubview({{ property.name }}Label)
         {% endfor %}
         
@@ -67,4 +67,4 @@ class {{ resourceName }}TableViewCell: UITableViewCell {
     }
 }
 
-extension {{ resourceName }}TableViewCell: ReusableView {}
+extension {{ resource.name }}TableViewCell: ReusableView {}

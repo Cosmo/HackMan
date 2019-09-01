@@ -1,12 +1,12 @@
 //
-//  {{ resourceName }}ViewController.swift
+//  {{ resource.name }}ViewController.swift
 //
 
 import UIKit
 
-class {{ resourceName }}ViewController: UIViewController {
+class {{ resource.name }}ViewController: UIViewController {
     {% if coordinator %}
-    weak var coordinator: {{ resourceName }}Coordinator?
+    weak var coordinator: {{ resource.name }}Coordinator?
     {% endif %}
     
     convenience init() {
@@ -23,7 +23,7 @@ class {{ resourceName }}ViewController: UIViewController {
     }
     
     func commonInit() {
-        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName }} Title (Singular)")
+        title = NSLocalizedString("{{ resource.name }}", comment: "{{ resource.name }} Title (Singular)")
     }
     
     override func viewDidLoad() {

@@ -12,45 +12,28 @@ class ViewController: NSObject, Generator {
             exit(0)
         }
         
-        var arguments = arguments
-        let resourceName = arguments.removeFirst().upperCamelCased()
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         
+        
+        var arguments = arguments
+        let resource = Resource(
+            name: arguments.removeFirst(),
+            properties: Property.createList(inputStrings: arguments)
+        )
         let context: [String: Any] = [
-            "resourceName": resourceName,
+            "resource": resource,
             "coordinator": containsCoordinator
         ]
         
-        let ext = Extension()
-        ext.registerFilter("pluralized") { (value: Any?) in
-            if let value = value as? String {
-                return value.pluralized()
-            }
-            return value
-        }
-        ext.registerFilter("upperCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.upperCamelCased()
-            }
-            return value
-        }
-        ext.registerFilter("lowerCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.lowerCamelCased()
-            }
-            return value
-        }
-        
         let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader, extensions: [ext])
+        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName)/\(resourceName)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.name)/\(resource.name)ViewController.swift", contents: rendered, options: options)
         
         if containsCoordinator {
             let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf", context: context)
-            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName)Coordinator.swift", contents: rendered2, options: options)
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resource.name)Coordinator.swift", contents: rendered2, options: options)
         }
     }
     

@@ -31,24 +31,31 @@ extension StringLiteralType {
 }
 
 extension StringLiteralType {
+    private var isAllLetters: Bool {
+        return self
+            .allSatisfy({ $0.isLetter })
+    }
+    
+    var capitalizedStrings: [String] {
+        return self
+            .split(separator: "_")
+            .map({ String($0).capitalized })
+    }
+    
     func lowerCamelCased() -> String {
-        if self.isLowerCamelCase {
-            return self
-        }
+        if self.isLowerCamelCase { return self }
+        if self.isAllLetters { return prefix(1).lowercased() + dropFirst() }
         
-        return self.split(separator: "_").enumerated().map { (offset, element) -> String in
-            if offset == 0 {
-                return String(element).lowercased()
-            } else {
-                return String(element).capitalized
-            }
-        }.joined()
+        var strings = capitalizedStrings
+        if let firstString = strings.first {
+            strings[0] = firstString.lowercased()
+        }
+        return strings.joined()
     }
     
     func upperCamelCased() -> String {
-        if self.isUpperCamelCase {
-            return self
-        }
-        return self.split(separator: "_").map({ String($0).capitalized }).joined()
+        if self.isUpperCamelCase { return self }
+        if self.isAllLetters { return prefix(1).uppercased() + dropFirst() }
+        return capitalizedStrings.joined()
     }
 }

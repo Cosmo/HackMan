@@ -13,37 +13,19 @@ class CoordinatorChild: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().upperCamelCased()
-        
+        let resource = Resource(
+            name: arguments.removeFirst(),
+            properties: Property.createList(inputStrings: arguments)
+        )
         let context: [String: Any] = [
-            "resourceName": resourceName
+            "resource": resource
         ]
         
-        let ext = Extension()
-        ext.registerFilter("pluralized") { (value: Any?) in
-            if let value = value as? String {
-                return value.pluralized()
-            }
-            return value
-        }
-        ext.registerFilter("upperCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.upperCamelCased()
-            }
-            return value
-        }
-        ext.registerFilter("lowerCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.lowerCamelCased()
-            }
-            return value
-        }
-        
         let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader, extensions: [ext])
+        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resourceName.pluralized().upperCamelCased())Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

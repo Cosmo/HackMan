@@ -12,19 +12,19 @@ class TableViewCell: NSObject, Generator {
         }
         
         var arguments = arguments
-        let resourceName = arguments.removeFirst().upperCamelCased()
-        let properties = Property.createList(inputStrings: arguments)
-        
+        let resource = Resource(
+            name: arguments.removeFirst(),
+            properties: Property.createList(inputStrings: arguments)
+        )
         let context: [String: Any] = [
-            "resourceName": resourceName,
-            "properties": properties
+            "resource": resource
         ]
         
         let loader = FileSystemLoader(paths: [basePath])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "TableViewCell.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resourceName)TableViewCell.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resource.name)TableViewCell.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

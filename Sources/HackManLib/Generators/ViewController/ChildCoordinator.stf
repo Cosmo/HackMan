@@ -1,6 +1,6 @@
 import UIKit
 
-class {{ resourceName }}Coordinator: Coordinator {
+class {{ resource.name }}Coordinator: Coordinator {
     var children = [Coordinator]()
     var parent: Coordinator?
     var containerController: UIViewController
@@ -10,7 +10,7 @@ class {{ resourceName }}Coordinator: Coordinator {
     }
     
     func start() {
-        let viewController = {{ resourceName }}ViewController()
+        let viewController = {{ resource.name }}ViewController()
         viewController.coordinator = self
         (containerController as? UINavigationController)?.pushViewController(viewController, animated: false)
     }

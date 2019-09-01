@@ -12,42 +12,21 @@ class ViewControllerDetail: NSObject, Generator {
             exit(0)
         }
         
-        var arguments = arguments
-        let resourceName = arguments.removeFirst().upperCamelCased()
-        let properties = Property.createList(inputStrings: arguments)
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
-        
+        var arguments = arguments
+        let resource = Resource(
+            name: arguments.removeFirst(),
+            properties: Property.createList(inputStrings: arguments)
+        )
         let context: [String: Any] = [
-            "resourceName": resourceName,
-            "properties": properties,
+            "resource": resource,
             "coordinator": containsCoordinator
         ]
         
-        let ext = Extension()
-        ext.registerFilter("pluralized") { (value: Any?) in
-            if let value = value as? String {
-                return value.pluralized()
-            }
-            return value
-        }
-        ext.registerFilter("upperCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.upperCamelCased()
-            }
-            return value
-        }
-        ext.registerFilter("lowerCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.lowerCamelCased()
-            }
-            return value
-        }
-        
         let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader, extensions: [ext])
+        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ViewControllerDetail.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().upperCamelCased())/\(resourceName)ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.name)ViewController.swift", contents: rendered, options: options)
     }
     
     func printUsage() {

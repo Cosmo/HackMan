@@ -1,15 +1,16 @@
 import Foundation
 
-struct {{ resourceName }} {
-    {% for property in properties %}
-    let {{ property.name }}: {{ property.valueType }}{% endfor %}
+struct {{ resource.name }} {
+    {% for property in resource.properties %}
+        let {{ property.name }}: {{ property.valueType }}
+    {% endfor %}
 
-    static func sampleData() -> [{{ resourceName }}] {
+    static func sampleData() -> [{{ resource.name }}] {
         return [{% for mock in mocks %}
             {{ mock }}, {% endfor %}
         ]
     }
 }
 
-extension {{ resourceName }}: Codable {
+extension {{ resource.name }}: Codable {
 }

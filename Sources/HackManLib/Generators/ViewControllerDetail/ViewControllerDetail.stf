@@ -1,10 +1,10 @@
 import UIKit
 
-class {{ resourceName }}ViewController: UIViewController {
+class {{ resource.name }}ViewController: UIViewController {
     {% if coordinator %}
-    weak var coordinator: {{ resourceName | pluralized | upperCamelCased }}Coordinator?
+    weak var coordinator: {{ resource.pluralizedName }}Coordinator?
     {% endif %}
-    var {{ resourceName | lowerCamelCased }}: {{ resourceName }}
+    var {{ resource.nameForFunction }}: {{ resource.name }}
     
     var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -12,7 +12,7 @@ class {{ resourceName }}ViewController: UIViewController {
         return stackView
     }()
     
-    {% for property in properties %}
+    {% for property in resource.properties %}
     
     {% if property.isCustomResource %}
     lazy var {{ property.name }}Button: UIButton = {
@@ -30,12 +30,12 @@ class {{ resourceName }}ViewController: UIViewController {
     {% endfor %}
     
     
-    convenience init({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
-        self.init(nibName: nil, bundle: nil, {{ resourceName | lowerCamelCased }}: {{ resourceName | lowerCamelCased }})
+    convenience init({{ resource.nameForFunction }}: {{ resource.name }}) {
+        self.init(nibName: nil, bundle: nil, {{ resource.nameForFunction }}: {{ resource.nameForFunction }})
     }
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, {{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
-        self.{{ resourceName | lowerCamelCased }} = {{ resourceName | lowerCamelCased }}
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, {{ resource.nameForFunction }}: {{ resource.name }}) {
+        self.{{ resource.nameForFunction }} = {{ resource.nameForFunction }}
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         commonInit()
     }
@@ -45,7 +45,7 @@ class {{ resourceName }}ViewController: UIViewController {
     }
     
     func commonInit() {
-        title = NSLocalizedString("{{ resourceName }}", comment: "{{ resourceName | pluralized | upperCamelCased }} Title (Singular)")
+        title = NSLocalizedString("{{ resource.name }}", comment: "{{ resource.pluralizedName }} Title (Singular)")
     }
     
     override func viewDidLoad() {
@@ -55,13 +55,13 @@ class {{ resourceName }}ViewController: UIViewController {
     
     view.backgroundColor = UIColor.white
     
-    {% for property in properties %}
+    {% for property in resource.properties %}
     {% if property.isCustomResource %}
         {{ property.name }}Button.addTarget(self, action: #selector({{ property.name }}ButtonAction(sender:)), for: UIControl.Event.touchUpInside)
-        {{ property.name }}Button.setTitle(String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }}), for: UIControl.State.normal)
+        {{ property.name }}Button.setTitle(String(describing: {{ resource.nameForFunction }}.{{ property.name }}), for: UIControl.State.normal)
         stackView.addArrangedSubview({{ property.name }}Button)
     {% else %}
-        {{ property.name }}Label.text = String(describing: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+        {{ property.name }}Label.text = String(describing: {{ resource.nameForFunction }}.{{ property.name }})
         stackView.addArrangedSubview({{ property.name }}Label)
     {% endif %}
     {% endfor %}
@@ -79,12 +79,12 @@ class {{ resourceName }}ViewController: UIViewController {
     }
 }
     
-{% for property in properties %}
+{% for property in resource.properties %}
 {% if property.isCustomResource %}
-extension {{ resourceName }}ViewController {
-    @objc func {{ property.name | lowerCamelCased }}ButtonAction(sender: UIButton) {
+extension {{ resource.name }}ViewController {
+    @objc func {{ property.name }}ButtonAction(sender: UIButton) {
         {% if coordinator %}
-        (coordinator?.parent as? MainCoordinator)?.select{{ property.name | upperCamelCased }}({{ property.name }}: {{ resourceName | lowerCamelCased }}.{{ property.name }})
+        (coordinator?.parent as? MainCoordinator)?.select{{ property.upperCamelCasedName }}({{ property.name }}: {{ resource.nameForFunction }}.{{ property.name }})
         {% endif %}
     }
 }

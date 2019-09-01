@@ -9,6 +9,7 @@ import Foundation
 
 struct Property: Equatable {
     public let name: String
+    public var upperCamelCasedName: String
     public let valueType: String
     
     public var isCustomResource: Bool {
@@ -24,20 +25,19 @@ struct Property: Equatable {
         "String",
     ]
     
-    init(name: String, valueType: String, isArray: Bool = false) {
-        self.name = name
-        self.valueType = valueType.upperCamelCased()
+    private static var defaultValueType = "String"
+    
+    init(name: String, valueType: String?) {
+        self.name = name.lowerCamelCased()
+        self.upperCamelCasedName = self.name.upperCamelCased()
+        
+        self.valueType = valueType?.upperCamelCased() ?? Property.defaultValueType
     }
     
     init?(input: String) {
         let splitStrings = input.split(separator: ":").map({ String($0) })
-        guard let name = splitStrings.first else {
-            return nil
-        }
-        let valueTypeSubsequence = (splitStrings.count == 1 ? "String" : splitStrings[1])
-        let valueType = String(valueTypeSubsequence).upperCamelCased()
-        self.name = name.lowerCamelCased()
-        self.valueType = valueType
+        guard let name = splitStrings.first else { return nil }
+        self.init(name: name, valueType: splitStrings.count > 1 ? splitStrings[1] : nil)
     }
     
     static func createList(inputStrings: [String]) -> [Property] {
