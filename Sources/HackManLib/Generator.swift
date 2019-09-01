@@ -15,10 +15,14 @@ public protocol Generator {
 }
 
 extension Generator {
-    var path: Path {
+    var generatorName: String {
+        return String(describing: type(of: self))
+    }
+    
+    var basePath: Path {
         var bundlePath = Bundle.main.bundlePath.split(separator: "/")
         bundlePath.removeLast(2)
         let generatorsPath = bundlePath.joined(separator: "/")
-        return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
+        return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(generatorName)")
     }
 }

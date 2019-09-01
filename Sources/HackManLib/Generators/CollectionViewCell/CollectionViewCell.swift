@@ -20,7 +20,7 @@ class CollectionViewCell: NSObject, Generator {
             "properties": properties
         ]
         
-        let loader = FileSystemLoader(paths: [path])
+        let loader = FileSystemLoader(paths: [basePath])
         let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CollectionViewCell.stf", context: context)
         

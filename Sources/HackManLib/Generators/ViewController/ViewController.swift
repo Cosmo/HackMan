@@ -42,7 +42,7 @@ class ViewController: NSObject, Generator {
             return value
         }
         
-        let loader = FileSystemLoader(paths: [path])
+        let loader = FileSystemLoader(paths: [basePath])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         

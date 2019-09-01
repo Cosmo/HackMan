@@ -44,7 +44,7 @@ class ViewControllerDetail: NSObject, Generator {
             return value
         }
         
-        let loader = FileSystemLoader(paths: [path])
+        let loader = FileSystemLoader(paths: [basePath])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "ViewControllerDetail.stf", context: context)
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName)ViewController.swift", contents: rendered, options: options)

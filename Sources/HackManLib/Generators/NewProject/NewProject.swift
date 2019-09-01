@@ -40,7 +40,7 @@ class NewProject: NSObject, Generator {
             return value
         }
         
-        let loader = FileSystemLoader(paths: [path])
+        let loader = FileSystemLoader(paths: [basePath])
         let environment = Environment(loader: loader, extensions: [ext])
         let rendered = try! environment.renderTemplate(name: "project.yml", context: context)
         Writer.createFile("\(projectName)/project.yml", contents: rendered, options: options)
