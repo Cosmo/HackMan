@@ -8,12 +8,12 @@
 import Foundation
 
 extension StringLiteralType {
-    enum letterCase {
+    enum LetterCase {
         case upper
         case lower
     }
     
-    func camelCased(_ firstLetterCase: letterCase) -> String {
+    func camelCased(_ firstLetterCase: LetterCase) -> String {
         var string = ""
         
         for (index, word) in self.split(separator: "_").enumerated() {
@@ -27,7 +27,7 @@ extension StringLiteralType {
         return string
     }
     
-    func camelCasedIfNeeded(_ firstLetterCase: letterCase) -> String {
+    func camelCasedIfNeeded(_ firstLetterCase: LetterCase) -> String {
         guard let firstLetter = self.first else {
             fatalError("String empty!")
         }

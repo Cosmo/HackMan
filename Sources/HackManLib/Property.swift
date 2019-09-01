@@ -26,7 +26,7 @@ struct Property: Equatable {
     
     init(name: String, valueType: String, isArray: Bool = false) {
         self.name = name
-        self.valueType = valueType.camelCasedIfNeeded(String.letterCase.upper)
+        self.valueType = valueType.camelCasedIfNeeded(.upper)
     }
     
     init?(input: String) {
