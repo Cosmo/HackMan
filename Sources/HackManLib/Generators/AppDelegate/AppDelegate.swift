@@ -6,9 +6,6 @@ class AppDelegate: NSObject, Generator {
     required override init() {}
 
     func generate(arguments: [String], options: [String]) {
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         if containsCoordinator {
             Coordinator().generate(arguments: arguments, options: options)

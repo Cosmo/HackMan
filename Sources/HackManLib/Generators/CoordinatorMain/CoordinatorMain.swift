@@ -22,8 +22,6 @@ class CoordinatorMain: NSObject, Generator {
             }
         }
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CoordinatorMain.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/MainCoordinator.swift", contents: rendered, options: options)

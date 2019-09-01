@@ -28,8 +28,6 @@ class Model: NSObject, Generator {
             "mocks": mocks
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Model.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Models/\(resource.name).swift", contents: rendered, options: options)

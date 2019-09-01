@@ -25,8 +25,6 @@ class ViewController: NSObject, Generator {
             "coordinator": containsCoordinator
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ViewController.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.name)/\(resource.name)ViewController.swift", contents: rendered, options: options)

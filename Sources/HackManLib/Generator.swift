@@ -7,6 +7,7 @@
 
 import Foundation
 import PathKit
+import Stencil
 
 public protocol Generator {
     init()
@@ -24,5 +25,13 @@ extension Generator {
         bundlePath.removeLast(2)
         let generatorsPath = bundlePath.joined(separator: "/")
         return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(generatorName)")
+    }
+    
+    var loader: FileSystemLoader {
+        return FileSystemLoader(paths: [basePath])
+    }
+    
+    var environment: Environment {
+        Environment(loader: loader)
     }
 }

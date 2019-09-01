@@ -21,8 +21,6 @@ class CoordinatorChild: NSObject, Generator {
             "resource": resource
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)

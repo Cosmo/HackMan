@@ -6,8 +6,6 @@ class ReusableView: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "ReusableView.stf")
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/ReusableView.swift", contents: rendered, options: options)
         

@@ -20,8 +20,6 @@ class TableViewCell: NSObject, Generator {
             "resource": resource
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "TableViewCell.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resource.name)TableViewCell.swift", contents: rendered, options: options)

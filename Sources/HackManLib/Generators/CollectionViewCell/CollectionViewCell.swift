@@ -20,8 +20,6 @@ class CollectionViewCell: NSObject, Generator {
             "resource": resource
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "CollectionViewCell.stf", context: context)
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resource.name)CollectionViewCell.swift", contents: rendered, options: options)

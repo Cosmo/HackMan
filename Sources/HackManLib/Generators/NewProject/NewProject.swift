@@ -21,8 +21,6 @@ class NewProject: NSObject, Generator {
             "bundleIdPrefix": "com.\(projectName.upperCamelCased())"
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "project.yml", context: context)
         Writer.createFile("\(projectName)/project.yml", contents: rendered, options: options)
         

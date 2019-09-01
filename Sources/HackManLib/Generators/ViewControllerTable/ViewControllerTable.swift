@@ -22,8 +22,6 @@ class ViewControllerTable: NSObject, Generator {
             "coordinator": containsCoordinator
         ]
         
-        let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader)
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerTable.stf", context: context)
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.pluralizedName)ViewController.swift", contents: rendered, options: options)
