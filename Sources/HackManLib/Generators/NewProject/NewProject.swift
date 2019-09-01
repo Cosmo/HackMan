@@ -17,31 +17,12 @@ class NewProject: NSObject, Generator {
         
         let context = [
             "projectName": projectName,
-            "source": Writer.extractSourcePath(options: options)
+            "source": Writer.extractSourcePath(options: options),
+            "bundleIdPrefix": "com.\(projectName.upperCamelCased())"
         ]
         
-        let ext = Extension()
-        ext.registerFilter("pluralized") { (value: Any?) in
-            if let value = value as? String {
-                return value.pluralized()
-            }
-            return value
-        }
-        ext.registerFilter("upperCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.upperCamelCased()
-            }
-            return value
-        }
-        ext.registerFilter("lowerCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.lowerCamelCased()
-            }
-            return value
-        }
-        
         let loader = FileSystemLoader(paths: [basePath])
-        let environment = Environment(loader: loader, extensions: [ext])
+        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "project.yml", context: context)
         Writer.createFile("\(projectName)/project.yml", contents: rendered, options: options)
         
