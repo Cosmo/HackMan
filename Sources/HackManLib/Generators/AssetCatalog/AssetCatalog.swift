@@ -15,10 +15,14 @@ class AssetCatalog: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Assets.xcassets/AppIcon.appiconset/Contents.json", contents: contents2, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate asset_catalog")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate asset_catalog")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "asset_catalog"
     }
 }

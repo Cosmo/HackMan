@@ -9,7 +9,7 @@ class NewProject: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -32,14 +32,14 @@ class NewProject: NSObject, Generator {
         print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
     }
     
-    func printUsage() {
-        print("Usage: hackman new APP_NAME")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman new AwesomeApp")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "new APP_NAME"
     }
 }

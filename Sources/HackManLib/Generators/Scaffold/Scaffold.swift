@@ -7,7 +7,7 @@ class Scaffold: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -29,14 +29,14 @@ class Scaffold: NSObject, Generator {
         }
     }
     
-    func printUsage() {
-        print("Usage: hackman generate scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate scaffold song title:string artist_name:string album_name:string")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
     }
 }

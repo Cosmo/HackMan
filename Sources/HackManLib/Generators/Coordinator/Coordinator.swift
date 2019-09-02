@@ -11,11 +11,14 @@ class Coordinator: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/Coordinator.swift", contents: rendered, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate coordinator")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate coordinator")
     }
-
+    
+    static func singleLineUsage() -> String {
+        return "coordinator"
+    }
 }

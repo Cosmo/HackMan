@@ -24,10 +24,14 @@ class ViewControllerInformation: NSObject, Generator {
         ViewControllerWeb().generate(arguments: arguments, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate view_controller_information")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate view_controller_information")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "view_controller_information"
     }
 }

@@ -8,7 +8,7 @@ class ViewController: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -35,14 +35,14 @@ class ViewController: NSObject, Generator {
         }
     }
     
-    func printUsage() {
-        print("Usage: hackman generate view_controller NAME")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate view_controller song")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "view_controller NAME"
     }
 }

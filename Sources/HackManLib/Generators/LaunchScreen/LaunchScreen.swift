@@ -12,10 +12,14 @@ class LaunchScreen: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/LaunchScreen.storyboard", contents: contents, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate launch_screen")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate launch_screen")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "launch_screen"
     }
 }

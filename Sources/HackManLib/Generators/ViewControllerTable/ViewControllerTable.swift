@@ -7,7 +7,7 @@ class ViewControllerTable: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -30,14 +30,14 @@ class ViewControllerTable: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.name)ResultsViewController.swift", contents: rendered2, options: options)
     }
     
-    func printUsage() {
-        print("Usage: hackman generate view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate view_controller_table song title:string artist_name:string album_name:string")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
     }
 }

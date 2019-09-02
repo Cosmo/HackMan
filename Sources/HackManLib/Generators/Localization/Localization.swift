@@ -8,7 +8,11 @@ class Localization: NSObject, Generator {
         print("NOT IMPLEMENTED!")
     }
     
-    func help() {
+    static func help() {
         print("Not implemented.")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "Not implemented."
     }
 }

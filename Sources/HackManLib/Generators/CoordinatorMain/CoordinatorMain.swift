@@ -28,10 +28,14 @@ class CoordinatorMain: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/MainCoordinator.swift", contents: rendered, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate coordinator_main")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate coordinator_main")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "coordinator_main"
     }
 }

@@ -8,7 +8,7 @@ class CoordinatorChild: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -26,14 +26,14 @@ class CoordinatorChild: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)
     }
     
-    func printUsage() {
-        print("Usage: hackman generate coordinator_child NAME")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate coordinator_child song")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "coordinator_child NAME"
     }
 }

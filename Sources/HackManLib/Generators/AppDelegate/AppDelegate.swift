@@ -21,10 +21,14 @@ class AppDelegate: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/AppDelegate.swift", contents: rendered, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate app_delegate")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate app_delegate")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "app_delegate"
     }
 }

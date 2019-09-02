@@ -16,10 +16,14 @@ class ReusableView: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/UITableViewExtensions.swift", contents: rendered3, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate reusable_view")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate reusable_view")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "reusable_view"
     }
 }

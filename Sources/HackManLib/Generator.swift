@@ -12,7 +12,8 @@ import Stencil
 public protocol Generator {
     init()
     func generate(arguments: [String], options: [String])
-    func help()
+    static func help()
+    static func singleLineUsage() -> String
 }
 
 extension Generator {

@@ -7,7 +7,7 @@ class CollectionViewCell: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -25,14 +25,14 @@ class CollectionViewCell: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Views/Cells/\(resource.name)CollectionViewCell.swift", contents: rendered, options: options)
     }
     
-    func printUsage() {
-        print("Usage: hackman generate collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate collection_view_cell song title:string artist_name:string album_name:string")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
     }
 }

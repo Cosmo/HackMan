@@ -7,7 +7,7 @@ class Model: NSObject, Generator {
     
     func generate(arguments: [String], options: [String]) {
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
@@ -33,14 +33,14 @@ class Model: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Models/\(resource.name).swift", contents: rendered, options: options)
     }
     
-    func printUsage() {
-        print("Usage: hackman generate model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate model song title:string artist_name:string album_name:string")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …."
     }
 }
