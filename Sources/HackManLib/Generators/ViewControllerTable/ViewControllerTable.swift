@@ -22,12 +22,12 @@ class ViewControllerTable: NSObject, Generator {
             "coordinator": containsCoordinator
         ]
         
-        
         let rendered = try! environment.renderTemplate(name: "ViewControllerTable.stf", context: context)
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.pluralizedName)ViewController.swift", contents: rendered, options: options)
         
-        let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.name)ResultsViewController.swift", contents: rendered2, options: options)
+        SearchResultsController().generate(arguments: arguments, options: options)
+        DataSourceTableView().generate(arguments: arguments, options: options)
+        DataSourceTableViewSearchResults().generate(arguments: arguments, options: options)
     }
     
     static func help() {

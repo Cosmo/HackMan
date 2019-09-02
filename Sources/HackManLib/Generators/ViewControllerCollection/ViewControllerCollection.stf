@@ -9,9 +9,13 @@ class {{ resource.pluralizedName }}ViewController: UIViewController {
     weak var coordinator: {{ resource.pluralizedName }}Coordinator?
     {% endif %}
     
+    let searchResultsData = {{ resource.pluralizedName }}SearchResultsDataSource()
+    
     lazy var searchController: UISearchController = {
-        let searchResultsController = {{ resource.name }}ResultsViewController()
-        searchResultsController.tableView.dataSource = self
+        let searchResultsController = {{ resource.name }}SearchResultsViewController()
+        self.searchResultsData.coordinator = coordinator
+        searchResultsController.tableView.dataSource = self.searchResultsData
+        searchResultsController.tableView.delegate = self.searchResultsData
         let searchController = UISearchController(searchResultsController: searchResultsController)
         // searchController.searchBar.scopeButtonTitles = ["All", "Option 1", "Option 2", "Other"]
         searchController.searchResultsUpdater = self
@@ -143,25 +147,7 @@ extension {{ resource.pluralizedName }}ViewController {
 extension {{ resource.pluralizedName }}ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         // Called when the search bar's text or scope has changed or when the search bar becomes first responder.
-        (searchController.searchResultsController as? {{ resource.name }}ResultsViewController)?.tableView.reloadData()
-    }
-}
-
-extension {{ resource.pluralizedName }}ViewController: UITableViewDataSource {
-    var filtered: [{{ resource.name }}] {
-        let filterString = (navigationItem.searchController?.searchBar.text ?? "").lowercased()
-        return {{ resource.pluralizedNameForFunction }}.filter({String(describing: $0).lowercased().contains(filterString)})
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filtered.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = filtered[indexPath.row].{{ resource.properties.first.name }}
-        cell.detailTextLabel?.text = String(describing: filtered[indexPath.row])
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        return cell
+        searchResultsData.filterString = searchController.searchBar.text?.lowercased()
+        (searchController.searchResultsController as? {{ resource.name }}SearchResultsViewController)?.tableView.reloadData()
     }
 }
