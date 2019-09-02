@@ -12,10 +12,10 @@ class CoordinatorChild: NSObject, Generator {
             exit(0)
         }
         
-        var arguments = arguments
+        var mutableArguments = arguments
         let resource = Resource(
-            name: arguments.removeFirst(),
-            properties: Property.createList(inputStrings: arguments)
+            name: mutableArguments.removeFirst(),
+            properties: Property.createList(inputStrings: mutableArguments)
         )
         let context: [String: Any] = [
             "resource": resource

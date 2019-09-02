@@ -13,8 +13,8 @@ class NewProject: NSObject, Generator {
             exit(0)
         }
         
-        var arguments = arguments
-        let projectName = arguments.removeFirst()
+        var mutableArguments = arguments
+        let projectName = mutableArguments.removeFirst()
         
         let context = [
             "projectName": projectName,

@@ -13,10 +13,10 @@ class Model: NSObject, Generator {
         
         let strings = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven"]
         
-        var arguments = arguments
+        var mutableArguments = arguments
         let resource = Resource(
-            name: arguments.removeFirst(),
-            properties: Property.createList(inputStrings: arguments)
+            name: mutableArguments.removeFirst(),
+            properties: Property.createList(inputStrings: mutableArguments)
         )
         
         let mocks = strings.map { (string) in
