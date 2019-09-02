@@ -6,7 +6,6 @@ class ViewControllerInformation: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         
         let context: [String: Any] = [
@@ -15,6 +14,11 @@ class ViewControllerInformation: NSObject, Generator {
         
         let rendered = try! environment.renderTemplate(name: "ViewControllerInformation.stf", context: context)
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/InformationViewController.swift", contents: rendered, options: options)
+        
+        for page in ["DataProtection", "LegalNotices", "Licence", "Publisher"] {
+            let renderedPage = try! environment.renderTemplate(name: "\(page).html")
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/StaticPages/\(page).html", contents: renderedPage, options: options)
+        }
         
         if containsCoordinator {
             let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf")

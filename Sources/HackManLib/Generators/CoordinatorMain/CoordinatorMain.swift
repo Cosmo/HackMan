@@ -11,17 +11,17 @@ class CoordinatorMain: NSObject, Generator {
         let resources = arguments.map { Resource(name: $0, properties: nil) }
         var children = resources.map { "\($0.pluralizedName)Coordinator(navigationController: UINavigationController())" }
         
-        let context: [String: Any] = [
-            "resources": resources,
-            "children": children
-        ]
-        
         if let result = (options.filter { $0.contains("include") }).first?.split(separator: "=").last {
             for additionalControllerName in result.split(separator: ",") {
                 let additionalControllerName = String(additionalControllerName).upperCamelCased()
                 children.append("\(additionalControllerName)Coordinator(navigationController: UINavigationController())")
             }
         }
+        
+        let context: [String: Any] = [
+            "resources": resources,
+            "children": children
+        ]
         
         let rendered = try! environment.renderTemplate(name: "CoordinatorMain.stf", context: context)
         
