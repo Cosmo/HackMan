@@ -5,7 +5,7 @@ configs:
   Enterprise Release: release
   AppStore Release: release
 options:
-  bundleIdPrefix: com.{{ projectName | upperCamelCased }}
+  bundleIdPrefix: {{ bundleIdPrefix }}
 targets:
   {{ projectName }}-iOS:
     type: application

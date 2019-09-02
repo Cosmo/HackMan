@@ -7,25 +7,32 @@
 
 import Foundation
 import PathKit
+import Stencil
 
 public protocol Generator {
     init()
     func generate(arguments: [String], options: [String])
-    func help()
+    static func help()
+    static func singleLineUsage() -> String
 }
 
 extension Generator {
-    var path: Path {
+    var generatorName: String {
+        return String(describing: type(of: self))
+    }
+    
+    var basePath: Path {
         var bundlePath = Bundle.main.bundlePath.split(separator: "/")
         bundlePath.removeLast(2)
         let generatorsPath = bundlePath.joined(separator: "/")
-        return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(String(describing: type(of: self)))")
+        return Path("/\(generatorsPath)/Sources/HackManLib/Generators/\(generatorName)")
     }
     
-    func showHelpIfNeeded(options: [String]) {
-        if options.contains("-h") || options.contains("--help") {
-            help()
-            exit(0)
-        }
+    var loader: FileSystemLoader {
+        return FileSystemLoader(paths: [basePath])
+    }
+    
+    var environment: Environment {
+        Environment(loader: loader)
     }
 }

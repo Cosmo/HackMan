@@ -1,6 +1,6 @@
 import UIKit
 
-class {{ resourceName }}ResultsViewController: UIViewController {
+class {{ resource.name }}SearchResultsViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
         tableView.keyboardDismissMode = UIScrollView.KeyboardDismissMode.onDrag

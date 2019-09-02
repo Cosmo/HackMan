@@ -6,20 +6,19 @@ class Coordinator: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
-        let loader = FileSystemLoader(paths: [path])
-        let environment = Environment(loader: loader)
         let rendered = try! environment.renderTemplate(name: "Coordinator.stf")
         
         Writer.createFile("\(Writer.extractSourcePath(options: options))/Protocols/Coordinator.swift", contents: rendered, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate coordinator")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate coordinator")
     }
-
+    
+    static func singleLineUsage() -> String {
+        return "coordinator"
+    }
 }

@@ -6,63 +6,38 @@ class ViewControllerTable: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
         guard !arguments.isEmpty else {
-            printUsage()
+            type(of: self).help()
             exit(0)
         }
         
-        var arguments = arguments
-        let resourceName = arguments.removeFirst().camelCasedIfNeeded(.upper)
-        let properties = Property.createList(inputStrings: arguments)
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
-        
+        var mutableArguments = arguments
+        let resource = Resource(
+            name: mutableArguments.removeFirst(),
+            properties: Property.createList(inputStrings: mutableArguments)
+        )
         let context: [String: Any] = [
-            "resourceName": resourceName,
-            "properties": properties,
+            "resource": resource,
             "coordinator": containsCoordinator
         ]
         
-        let ext = Extension()
-        ext.registerFilter("pluralized") { (value: Any?) in
-            if let value = value as? String {
-                return value.pluralized()
-            }
-            return value
-        }
-        ext.registerFilter("upperCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.camelCasedIfNeeded(.upper)
-            }
-            return value
-        }
-        ext.registerFilter("lowerCamelCased") { (value: Any?) in
-            if let value = value as? String {
-                return value.camelCasedIfNeeded(.lower)
-            }
-            return value
-        }
-        
-        let loader = FileSystemLoader(paths: [path])
-        let environment = Environment(loader: loader, extensions: [ext])
-        
         let rendered = try! environment.renderTemplate(name: "ViewControllerTable.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName.pluralized().camelCasedIfNeeded(.upper))ViewController.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.pluralizedName)ViewController.swift", contents: rendered, options: options)
         
-        let rendered2 = try! environment.renderTemplate(name: "ResultsViewController.stf", context: context)
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resourceName.pluralized().camelCasedIfNeeded(.upper))/\(resourceName)ResultsViewController.swift", contents: rendered2, options: options)
+        SearchResultsController().generate(arguments: arguments, options: options)
+        DataSourceTableView().generate(arguments: arguments, options: options)
+        DataSourceTableViewSearchResults().generate(arguments: arguments, options: options)
     }
     
-    func printUsage() {
-        print("Usage: hackman generate view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate view_controller_table song title:string artist_name:string album_name:string")
     }
     
-    func help() {
-        printUsage()
+    static func singleLineUsage() -> String {
+        return "view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
     }
 }

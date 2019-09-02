@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StringCase
 
 public struct CommandLineRunner {
     public enum Command {
@@ -50,11 +51,17 @@ public struct CommandLineRunner {
             Writer.finish()
         case .generate:
             guard !arguments.isEmpty else { throw GeneratorCommandError.noGenerator }
-            let generatorName = arguments.removeFirst().camelCasedIfNeeded(.upper)
+            let generatorName = arguments.removeFirst().upperCamelCased()
             guard let generator = NSClassFromString(generatorName) as? Generator.Type else {
                 throw GeneratorCommandError.unknownGenerator
             }
-            generator.init().generate(arguments: arguments, options: options)
+            
+            if options.contains("-h") || options.contains("--help") {
+                generator.help()
+            } else {
+                generator.init().generate(arguments: arguments, options: options)
+            }
+            
             Writer.finish()
         case .help:
             print("Find help on: https://github.com/Cosmo/HackMan")
@@ -90,26 +97,35 @@ extension CommandLineRunner {
     }
     
     public static func printGeneratorUsage() {
+        let generators: [Generator.Type] = [
+            AppDelegate.self,
+            AssetCatalog.self,
+            CollectionViewCell.self,
+            Coordinator.self,
+            CoordinatorChild.self,
+            CoordinatorMain.self,
+            DataSourceTableView.self,
+            DataSourceTableViewSearchResults.self,
+            LaunchScreen.self,
+            Model.self,
+            ReusableView.self,
+            Scaffold.self,
+            SearchResultsController.self,
+            TableViewCell.self,
+            ViewController.self,
+            ViewControllerCollection.self,
+            ViewControllerDetail.self,
+            ViewControllerInformation.self,
+            ViewControllerTable.self,
+            ViewControllerWeb.self,
+        ]
+        
         print("Usage: hackman generate GENERATOR")
         print()
         print("Generators:")
-        print("  scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  app_delegate")
-        print("  asset_catalog")
-        print("  launch_screen")
-        print("  reusable_view")
-        print("  coordinator")
-        print("  coordinator_main")
-        print("  coordinator_child NAME")
-        print("  model NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  view_controller NAME")
-        print("  view_controller_collection NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  view_controller_table NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  table_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  view_controller_detail NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …")
-        print("  view_controller_web")
-        print("  view_controller_information")
+        for generator in generators {
+            print("  \(generator.singleLineUsage())")
+        }
         print()
         print("Example:")
         print("  hackman generate scaffold song title:string artist_name:string album_name:string")

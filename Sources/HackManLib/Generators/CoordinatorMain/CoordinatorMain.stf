@@ -23,10 +23,10 @@ class MainCoordinator: Coordinator {
     }
 
     {% for resource in resources %}
-    func select{{ resource.name }}({{ resource.name | lowerCamelCased }}: {{ resource.name }}) {
-        (containerController as? UITabBarController)?.selectedIndex = children.firstIndex { $0 is {{ resource.name | pluralized | upperCamelCased }}Coordinator } ?? 0
-        let coordinator = children.first { $0 is {{ resource.name | pluralized | upperCamelCased }}Coordinator } as? {{ resource.name | pluralized | upperCamelCased }}Coordinator
-        coordinator?.detail({{ resource.name | lowerCamelCased }}: {{ resource.name | lowerCamelCased }})
+    func select{{ resource.name }}({{ resource.nameForFunction }}: {{ resource.name }}) {
+        (containerController as? UITabBarController)?.selectedIndex = children.firstIndex { $0 is {{ resource.pluralizedName }}Coordinator } ?? 0
+        let coordinator = children.first { $0 is {{ resource.pluralizedName }}Coordinator } as? {{ resource.pluralizedName }}Coordinator
+        coordinator?.detail({{ resource.nameForFunction }}: {{ resource.nameForFunction }})
     }
     {% endfor %}
 }

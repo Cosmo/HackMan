@@ -17,7 +17,7 @@ public struct Writer {
     static var creatables: [Writeable] = []
     
     public static func extractSourcePath(options: [String]) -> String {
-        if let result = (options.filter { $0.contains("--source") || $0.contains("-s") }).first?.split(separator: "=").last {
+        if let result = (options.filter { $0.contains("--source") }).first?.split(separator: "=").last {
             return String(result)
         } else {
             return "Source"

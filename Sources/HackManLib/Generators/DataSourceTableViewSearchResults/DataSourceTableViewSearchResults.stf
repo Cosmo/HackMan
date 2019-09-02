@@ -1,0 +1,38 @@
+import UIKit
+
+class {{ resource.pluralizedName }}SearchResultsDataSource: NSObject, UITableViewDataSource {
+    {% if coordinator %}
+    weak var coordinator: {{ resource.pluralizedName }}Coordinator?
+    {% endif %}
+    
+    var filterString: String?
+    
+    var {{ resource.pluralizedNameForFunction }}: [{{ resource.name }}] {
+        return {{ resource.name }}.sampleData()
+    }
+    
+    var filtered: [{{ resource.name }}] {
+        guard let filterString = filterString else { return [] }
+        return {{ resource.pluralizedNameForFunction }}.filter { String(describing: $0).lowercased().contains(filterString) }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filtered.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = filtered[indexPath.row].{{ resource.properties.first.name }}
+        cell.detailTextLabel?.text = String(describing: filtered[indexPath.row])
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        return cell
+    }
+}
+
+extension {{ resource.pluralizedName }}SearchResultsDataSource: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        {% if coordinator %}
+        coordinator?.detail({{ resource.nameForFunction }}: {{ resource.pluralizedNameForFunction }}[indexPath.item])
+        {% endif %}
+    }
+}

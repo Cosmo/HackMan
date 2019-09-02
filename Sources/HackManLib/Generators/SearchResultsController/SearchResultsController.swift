@@ -2,8 +2,8 @@ import Foundation
 import Stencil
 import GrammaticalNumber
 
-@objc(CoordinatorChild)
-class CoordinatorChild: NSObject, Generator {
+@objc(SearchResultsController)
+class SearchResultsController: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
@@ -21,19 +21,18 @@ class CoordinatorChild: NSObject, Generator {
             "resource": resource
         ]
         
-        let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
-        
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinators/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)
+        let rendered = try! environment.renderTemplate(name: "SearchResultsController.stf", context: context)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/\(resource.pluralizedName)/\(resource.name)SearchResultsViewController.swift", contents: rendered, options: options)
     }
     
     static func help() {
         print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
-        print("  hackman generate coordinator_child song")
+        print("  search_results_controller song")
     }
     
     static func singleLineUsage() -> String {
-        return "coordinator_child NAME"
+        return "search_results_controller NAME"
     }
 }

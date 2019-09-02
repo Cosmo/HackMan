@@ -6,11 +6,6 @@ class ViewControllerInformation: NSObject, Generator {
     required override init() {}
     
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
-        let loader = FileSystemLoader(paths: [path])
-        let environment = Environment(loader: loader)
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         
         let context: [String: Any] = [
@@ -20,18 +15,27 @@ class ViewControllerInformation: NSObject, Generator {
         let rendered = try! environment.renderTemplate(name: "ViewControllerInformation.stf", context: context)
         Writer.createFile("\(Writer.extractSourcePath(options: options))/ViewControllers/InformationViewController.swift", contents: rendered, options: options)
         
+        for page in ["DataProtection", "LegalNotices", "Licence", "Publisher"] {
+            let renderedPage = try! environment.renderTemplate(name: "\(page).html")
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/StaticPages/\(page).html", contents: renderedPage, options: options)
+        }
+        
         if containsCoordinator {
             let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf")
-            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/InformationCoordinator.swift", contents: rendered2, options: options)
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinators/InformationCoordinator.swift", contents: rendered2, options: options)
         }
         
         ViewControllerWeb().generate(arguments: arguments, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate view_controller_information")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate view_controller_information")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "view_controller_information"
     }
 }

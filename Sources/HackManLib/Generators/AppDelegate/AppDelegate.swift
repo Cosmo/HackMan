@@ -6,11 +6,6 @@ class AppDelegate: NSObject, Generator {
     required override init() {}
 
     func generate(arguments: [String], options: [String]) {
-        showHelpIfNeeded(options: options)
-        
-        let loader = FileSystemLoader(paths: [path])
-        let environment = Environment(loader: loader)
-        
         let containsCoordinator = options.contains("-c") || options.contains("--coordinator")
         if containsCoordinator {
             Coordinator().generate(arguments: arguments, options: options)
@@ -26,10 +21,14 @@ class AppDelegate: NSObject, Generator {
         Writer.createFile("\(Writer.extractSourcePath(options: options))/AppDelegate.swift", contents: rendered, options: options)
     }
     
-    func help() {
-        print("Usage: hackman generate app_delegate")
+    static func help() {
+        print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
         print("  hackman generate app_delegate")
+    }
+    
+    static func singleLineUsage() -> String {
+        return "app_delegate"
     }
 }

@@ -1,17 +1,17 @@
 //
-//  {{ className }}.swift
+//  {{ resource.name }}CollectionViewCell.swift
 //
 
 import UIKit
 
-class {{ resourceName }}CollectionViewCell: UICollectionViewCell {
+class {{ resource.name }}CollectionViewCell: UICollectionViewCell {
     var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.vertical
         return stackView
     }()
     
-    {% for property in properties %}
+    {% for property in resource.properties %}
     lazy var {{ property.name }}Label: UILabel = {
         let label = UILabel()
         {% if forloop.counter == 0 %}
@@ -42,7 +42,7 @@ class {{ resourceName }}CollectionViewCell: UICollectionViewCell {
         
         contentView.backgroundColor = UIColor.lightGray
             
-        {% for property in properties %}
+        {% for property in resource.properties %}
         stackView.addArrangedSubview({{ property.name }}Label)
         {% endfor %}
         
@@ -78,4 +78,4 @@ class {{ resourceName }}CollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension {{ resourceName }}CollectionViewCell: ReusableView {}
+extension {{ resource.name }}CollectionViewCell: ReusableView {}

@@ -1,6 +1,6 @@
 import UIKit
 
-class {{ resourceName | pluralized | upperCamelCased }}Coordinator: Coordinator {
+class {{ resource.pluralizedName }}Coordinator: Coordinator {
     var children = [Coordinator]()
     var parent: Coordinator?
     var containerController: UIViewController
@@ -10,15 +10,15 @@ class {{ resourceName | pluralized | upperCamelCased }}Coordinator: Coordinator 
     }
 
     func start() {
-        let viewController = {{ resourceName | pluralized | upperCamelCased }}ViewController()
+        let viewController = {{ resource.pluralizedName }}ViewController()
         viewController.coordinator = self
         (containerController as? UINavigationController)?.pushViewController(viewController, animated: false)
     }
 
-    func detail({{ resourceName | lowerCamelCased }}: {{ resourceName }}) {
-        let viewController = {{ resourceName }}ViewController({{ resourceName | lowerCamelCased }}: {{ resourceName | lowerCamelCased }})
+    func detail({{ resource.nameForFunction }}: {{ resource.name }}) {
+        let viewController = {{ resource.name }}ViewController({{ resource.nameForFunction }}: {{ resource.nameForFunction }})
         viewController.coordinator = self
-        viewController.title = "{{ resourceName }} Detail"
+        viewController.title = "{{ resource.name }} Detail"
         (containerController as? UINavigationController)?.pushViewController(viewController, animated: true)
     }
 }
