@@ -34,10 +34,10 @@ class DataSourceTableViewSearchResults: NSObject, Generator {
         print("Usage: hackman generate \(singleLineUsage())")
         print()
         print("Example:")
-        print("  hackman generate data_source_table_view song title:string artist_name:string album_name:string")
+        print("  hackman generate data_source_table_view_search_results song title:string artist_name:string album_name:string")
     }
     
     static func singleLineUsage() -> String {
-        return "data_source_table_view NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
+        return "data_source_table_view_search_results NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …"
     }
 }
