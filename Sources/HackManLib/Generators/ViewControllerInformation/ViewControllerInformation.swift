@@ -18,7 +18,7 @@ class ViewControllerInformation: NSObject, Generator {
         
         if containsCoordinator {
             let rendered2 = try! environment.renderTemplate(name: "ChildCoordinator.stf")
-            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/InformationCoordinator.swift", contents: rendered2, options: options)
+            Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinators/InformationCoordinator.swift", contents: rendered2, options: options)
         }
         
         ViewControllerWeb().generate(arguments: arguments, options: options)

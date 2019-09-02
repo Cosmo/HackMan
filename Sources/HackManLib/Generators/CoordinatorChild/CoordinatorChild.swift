@@ -23,7 +23,7 @@ class CoordinatorChild: NSObject, Generator {
         
         let rendered = try! environment.renderTemplate(name: "CoordinatorChild.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinators/\(resource.pluralizedName)Coordinator.swift", contents: rendered, options: options)
     }
     
     static func help() {

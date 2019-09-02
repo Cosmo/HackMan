@@ -25,7 +25,7 @@ class CoordinatorMain: NSObject, Generator {
         
         let rendered = try! environment.renderTemplate(name: "CoordinatorMain.stf", context: context)
         
-        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinator/MainCoordinator.swift", contents: rendered, options: options)
+        Writer.createFile("\(Writer.extractSourcePath(options: options))/Coordinators/MainCoordinator.swift", contents: rendered, options: options)
     }
     
     static func help() {
