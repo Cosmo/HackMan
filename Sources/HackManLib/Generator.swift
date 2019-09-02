@@ -33,6 +33,6 @@ extension Generator {
     }
     
     var environment: Environment {
-        Environment(loader: loader)
+        return Environment(loader: loader)
     }
 }

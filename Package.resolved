@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Cosmo/GrammaticalNumber.git",
         "state": {
           "branch": null,
-          "revision": "27145a4e0f236d0091800b864614ecbe27b0bdab",
-          "version": "0.0.2"
+          "revision": "3827665bd38a0fd5f215220b26c92df876539af0",
+          "version": "0.0.3"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Cosmo/StringCase.git",
         "state": {
           "branch": null,
-          "revision": "4266db35a164e833928ac2a9b812e554c0694201",
-          "version": "1.0.0"
+          "revision": "8b1c23b18382a67d44f96e609eaaaf7842f773e8",
+          "version": "1.0.1"
         }
       }
     ]
