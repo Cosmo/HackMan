@@ -147,7 +147,7 @@ Options
     Force override existing files
 ```
 ```sh
-# Create a UICollectionViewCell-Subclass with the given namen and properties as UILabels
+# Create a UICollectionViewCell-Subclass with the given name and properties as UILabels
 hackman generate collection_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 Options
@@ -166,7 +166,7 @@ Options
     Force override existing files
 ```
 ```sh
-# Create a UITableViewCell-Subclass with the given namen and properties as UILabels
+# Create a UITableViewCell-Subclass with the given name and properties as UILabels
 hackman generate table_view_cell NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 Options
@@ -174,7 +174,7 @@ Options
     Force override existing files
 ```
 ```sh
-# Create a ViewControllerDetail (UIViewController-Subclass) with the given namen and properties as UILabels
+# Create a ViewControllerDetail (UIViewController-Subclass) with the given name and properties as UILabels
 hackman generate view_controller_detail NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 Options
@@ -211,7 +211,7 @@ Options
 hackman generate scaffold NAME [PROPERTY[:TYPE] PROPERTY[:TYPE]] …
 
 # By default, the scaffold will be UICollectionView based.
-# In order to create UITableView based scaffolds, pass the --view=table at the end.
+# To create UITableView based scaffolds, pass the --view=table at the end.
 # Like so:
 hackman generate scaffold song title:string year:int --view=table
 
@@ -232,13 +232,13 @@ When creating scaffolds, models, controllers you can also specify multiple field
 ```sh
 hackman g scaffold author name:string birthday:date
 ```
-This commands creates among other things a struct of type `Author` with the following properties.
+This command creates, among other things a struct of type `Author` with the following properties.
 ```swift
     let name: String
     let birthday: Date
 ```
 
-You can also reference to your custom types.
+You can also refer to your custom types.
 ```sh
 hackman g scaffold Article title:string body:string published_at:date author:author
 ```
