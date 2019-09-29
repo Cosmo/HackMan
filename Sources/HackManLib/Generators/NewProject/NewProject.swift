@@ -28,7 +28,6 @@ class NewProject: NSObject, Generator {
         let rendered2 = try! environment.renderTemplate(name: "gitignore", context: context)
         Writer.createFile("\(projectName)/.gitignore", contents: rendered2, options: options)
         
-        print()
         print("Now go to your project directory (\"cd \(projectName)\") to run other commands (hackman generate).")
     }
     
